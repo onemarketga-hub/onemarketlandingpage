@@ -71,24 +71,6 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link to="/how-it-works" className="text-gray-300 hover:text-blue-400 transition-colors text-sm flex items-center gap-2 group">
-                  <span className="w-0 group-hover:w-2 h-0.5 bg-blue-400 transition-all duration-200"></span>
-                  {t.nav.howItWorks}
-                </Link>
-              </li>
-              <li>
-                <Link to="/why-onemarket" className="text-gray-300 hover:text-blue-400 transition-colors text-sm flex items-center gap-2 group">
-                  <span className="w-0 group-hover:w-2 h-0.5 bg-blue-400 transition-all duration-200"></span>
-                  {t.nav.whyOneMarket}
-                </Link>
-              </li>
-              <li>
-                <Link to="/testimonials" className="text-gray-300 hover:text-blue-400 transition-colors text-sm flex items-center gap-2 group">
-                  <span className="w-0 group-hover:w-2 h-0.5 bg-blue-400 transition-all duration-200"></span>
-                  {t.nav.testimonials}
-                </Link>
-              </li>
-              <li>
                 <Link to="/contact" className="text-gray-300 hover:text-blue-400 transition-colors text-sm flex items-center gap-2 group">
                   <span className="w-0 group-hover:w-2 h-0.5 bg-blue-400 transition-all duration-200"></span>
                   {t.nav.contact}
