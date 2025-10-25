@@ -12,9 +12,6 @@ export default function Navigation() {
   const navLinks = [
     { path: '/', label: t.nav.home },
     { path: '/about', label: t.nav.about },
-    { path: '/how-it-works', label: t.nav.howItWorks },
-    { path: '/why-onemarket', label: t.nav.whyOneMarket },
-    { path: '/testimonials', label: t.nav.testimonials },
     { path: '/contact', label: t.nav.contact },
   ];
 
