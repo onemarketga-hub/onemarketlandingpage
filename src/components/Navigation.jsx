@@ -16,33 +16,32 @@ export default function Navigation() {
   ];
 
   return (
-    <nav className="bg-white shadow-md sticky top-0 z-50">
+    <nav className="bg-white border-b border-gray-200 sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-20">
+        <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-3">
+          <Link to="/" className="flex items-center space-x-2">
             <img
               src="/assets/logo.jpeg"
               alt="OneMarket Logo"
-              className="h-12 w-12 rounded-lg object-cover"
+              className="h-10 w-10 rounded-lg object-cover"
             />
-            <span className="text-2xl font-bold text-blue-600" style={{ fontFamily: 'Poppins, sans-serif' }}>
+            <span className="text-xl font-bold text-gray-900">
               OneMarket
             </span>
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center space-x-8">
+          <div className="hidden lg:flex items-center space-x-6">
             {navLinks.map((link) => (
               <Link
                 key={link.path}
                 to={link.path}
-                className={`text-sm font-medium transition-colors duration-200 ${
+                className={`text-base font-medium transition-colors ${
                   isActive(link.path)
-                    ? 'text-blue-600 border-b-2 border-blue-600 pb-1'
+                    ? 'text-blue-600'
                     : 'text-gray-700 hover:text-blue-600'
                 }`}
-                style={{ fontFamily: 'Poppins, sans-serif' }}
               >
                 {link.label}
               </Link>
@@ -51,28 +50,21 @@ export default function Navigation() {
             {/* Language Toggle */}
             <button
               onClick={toggleLanguage}
-              className="flex items-center space-x-2 px-4 py-2 rounded-lg bg-blue-50 hover:bg-blue-100 transition-colors duration-200"
+              className="px-4 py-2 text-sm font-medium text-gray-700 hover:text-blue-600 border border-gray-300 rounded-lg hover:border-blue-600 transition-colors"
               aria-label="Toggle language"
             >
-              <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />
-              </svg>
-              <span className="text-sm font-semibold text-blue-600" style={{ fontFamily: 'Poppins, sans-serif' }}>
-                {language.toUpperCase()}
-              </span>
+              {language === 'fr' ? '🇫🇷 Français' : '🇬🇧 English'}
             </button>
           </div>
 
           {/* Mobile Menu Button */}
-          <div className="lg:hidden flex items-center space-x-4">
+          <div className="lg:hidden flex items-center space-x-3">
             <button
               onClick={toggleLanguage}
-              className="px-3 py-2 rounded-lg bg-blue-50 hover:bg-blue-100"
+              className="px-3 py-2 text-sm font-medium text-gray-700 border border-gray-300 rounded-lg"
               aria-label="Toggle language"
             >
-              <span className="text-sm font-semibold text-blue-600" style={{ fontFamily: 'Poppins, sans-serif' }}>
-                {language.toUpperCase()}
-              </span>
+              {language.toUpperCase()}
             </button>
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -92,18 +84,17 @@ export default function Navigation() {
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="lg:hidden pb-4 space-y-2">
+          <div className="lg:hidden pb-4 space-y-2 border-t border-gray-200 pt-4">
             {navLinks.map((link) => (
               <Link
                 key={link.path}
                 to={link.path}
                 onClick={() => setIsMenuOpen(false)}
-                className={`block px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-200 ${
+                className={`block px-4 py-2 text-base font-medium transition-colors ${
                   isActive(link.path)
-                    ? 'bg-blue-50 text-blue-600'
-                    : 'text-gray-700 hover:bg-gray-50'
+                    ? 'text-blue-600'
+                    : 'text-gray-700 hover:text-blue-600'
                 }`}
-                style={{ fontFamily: 'Poppins, sans-serif' }}
               >
                 {link.label}
               </Link>
