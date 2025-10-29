@@ -50,10 +50,10 @@ export default function Navigation() {
             {/* Language Toggle */}
             <button
               onClick={toggleLanguage}
-              className="px-4 py-2 text-sm font-medium text-gray-700 hover:text-blue-600 border border-gray-300 rounded-lg hover:border-blue-600 transition-colors"
+              className="w-16 px-4 py-2 text-sm font-medium text-gray-700 hover:text-blue-600 border border-gray-300 rounded-lg hover:border-blue-600 transition-colors"
               aria-label="Toggle language"
             >
-              {language === 'fr' ? '🇫🇷 Français' : '🇬🇧 English'}
+              {language === 'fr' ? 'FR' : 'EN'}
             </button>
           </div>
 
