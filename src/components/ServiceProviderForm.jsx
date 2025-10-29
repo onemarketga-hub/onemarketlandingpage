@@ -2,22 +2,78 @@ import { useState } from 'react';
 import { useLanguage } from '../context/LanguageContext';
 
 export default function ServiceProviderForm() {
-  const { t } = useLanguage();
+  const { language } = useLanguage();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
+  const [showOtherServiceType, setShowOtherServiceType] = useState(false);
+  const [showOtherSupport, setShowOtherSupport] = useState(false);
 
   const [formData, setFormData] = useState({
     businessName: '',
     contactName: '',
     whatsapp: '',
     facebook: '',
-    serviceType: '',
+    serviceType: [],
+    otherServiceType: '',
     location: '',
     experience: '',
     supportNeeded: [],
+    otherSupport: '',
     averagePrice: '',
     description: '',
   });
+
+  const serviceOptions = language === 'fr' ? [
+    'Nettoyage',
+    'Plomberie',
+    'Électricité',
+    'Beauté',
+    'Jardinage',
+    'Bricolage',
+    'Livraison',
+    'Garde d\'enfants',
+    'Cours particuliers',
+    'Remise en forme',
+    'Assistance informatique',
+    'Réparation auto',
+    'Peinture',
+    'Déménagement',
+    'Entretien ménager',
+    'Autre',
+  ] : [
+    'Cleaning',
+    'Plumbing',
+    'Electrical',
+    'Beauty',
+    'Gardening',
+    'Handyman',
+    'Delivery',
+    'Babysitting',
+    'Tutoring',
+    'Fitness',
+    'IT Support',
+    'Car Repair',
+    'Painting',
+    'Moving',
+    'House Maintenance',
+    'Other',
+  ];
+
+  const supportOptions = language === 'fr' ? [
+    'Obtenir Plus de Clients',
+    'Équipement Commercial',
+    'Soutien Marketing',
+    'Site Web',
+    'Meilleur Espace de Travail',
+    'Autre',
+  ] : [
+    'Getting More Clients',
+    'Business Equipment',
+    'Marketing Support',
+    'Website',
+    'Better Workspace',
+    'Other',
+  ];
 
   const handleChange = (e) => {
     setFormData({
@@ -26,18 +82,36 @@ export default function ServiceProviderForm() {
     });
   };
 
-  const handleCheckboxChange = (e) => {
-    const { value, checked } = e.target;
-    if (checked) {
+  const handleMultiSelect = (e, fieldName) => {
+    const value = e.target.value;
+    const isChecked = e.target.checked;
+
+    if (isChecked) {
       setFormData({
         ...formData,
-        supportNeeded: [...formData.supportNeeded, value],
+        [fieldName]: [...formData[fieldName], value],
       });
+      if (value === 'Other' || value === 'Autre') {
+        if (fieldName === 'serviceType') {
+          setShowOtherServiceType(true);
+        } else if (fieldName === 'supportNeeded') {
+          setShowOtherSupport(true);
+        }
+      }
     } else {
       setFormData({
         ...formData,
-        supportNeeded: formData.supportNeeded.filter((item) => item !== value),
+        [fieldName]: formData[fieldName].filter(item => item !== value),
       });
+      if (value === 'Other' || value === 'Autre') {
+        if (fieldName === 'serviceType') {
+          setShowOtherServiceType(false);
+          setFormData(prev => ({ ...prev, otherServiceType: '' }));
+        } else if (fieldName === 'supportNeeded') {
+          setShowOtherSupport(false);
+          setFormData(prev => ({ ...prev, otherSupport: '' }));
+        }
+      }
     }
   };
 
@@ -47,20 +121,24 @@ export default function ServiceProviderForm() {
     setSubmitStatus(null);
 
     try {
-      // Web3Forms endpoint - Using FormData (recommended)
       const formDataToSend = new FormData();
       formDataToSend.append('access_key', import.meta.env.VITE_WEB3FORMS_ACCESS_KEY);
       formDataToSend.append('subject', 'New Service Provider Registration - OneMarket');
       formDataToSend.append('from_name', formData.businessName);
 
-      // Append all form fields
-      Object.keys(formData).forEach(key => {
-        if (key === 'supportNeeded') {
-          formDataToSend.append(key, formData.supportNeeded.join(', '));
-        } else {
-          formDataToSend.append(key, formData[key]);
-        }
-      });
+      // Convert arrays to strings
+      formDataToSend.append('businessName', formData.businessName);
+      formDataToSend.append('contactName', formData.contactName);
+      formDataToSend.append('whatsapp', formData.whatsapp);
+      formDataToSend.append('facebook', formData.facebook);
+      formDataToSend.append('serviceType', formData.serviceType.join(', '));
+      formDataToSend.append('otherServiceType', formData.otherServiceType);
+      formDataToSend.append('location', formData.location);
+      formDataToSend.append('experience', formData.experience);
+      formDataToSend.append('supportNeeded', formData.supportNeeded.join(', '));
+      formDataToSend.append('otherSupport', formData.otherSupport);
+      formDataToSend.append('averagePrice', formData.averagePrice);
+      formDataToSend.append('description', formData.description);
 
       const response = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
@@ -76,13 +154,17 @@ export default function ServiceProviderForm() {
           contactName: '',
           whatsapp: '',
           facebook: '',
-          serviceType: '',
+          serviceType: [],
+          otherServiceType: '',
           location: '',
           experience: '',
           supportNeeded: [],
+          otherSupport: '',
           averagePrice: '',
           description: '',
         });
+        setShowOtherServiceType(false);
+        setShowOtherSupport(false);
       } else {
         setSubmitStatus('error');
       }
@@ -94,36 +176,16 @@ export default function ServiceProviderForm() {
     }
   };
 
-  const serviceTypes = [
-    t.serviceTypes.cleaning,
-    t.serviceTypes.plumbing,
-    t.serviceTypes.electrical,
-    t.serviceTypes.gardening,
-    t.serviceTypes.moving,
-    t.serviceTypes.handyman,
-    t.serviceTypes.pestControl,
-    t.serviceTypes.beauty,
-    t.serviceTypes.restaurant,
-    t.serviceTypes.salon,
-    t.serviceTypes.barbershop,
-    t.serviceTypes.clinic,
-    t.serviceTypes.gym,
-    t.serviceTypes.hotel,
-    t.serviceTypes.carRental,
-    t.serviceTypes.eventVenue,
-    t.serviceTypes.other,
-  ];
-
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
-      <h2 className="text-2xl font-bold text-gray-900 mb-6">
-        {t.serviceProviderForm.title}
-      </h2>
+      <h3 className="text-xl font-bold text-gray-900 mb-4">
+        {language === 'fr' ? 'Formulaire d\'Inscription de Prestataire' : 'Provider Registration Form'}
+      </h3>
 
       {/* Business Name */}
       <div>
         <label htmlFor="businessName" className="block text-sm font-semibold text-gray-700 mb-2">
-          {t.serviceProviderForm.businessName} <span className="text-red-500">*</span>
+          {language === 'fr' ? 'Nom de l\'Entreprise' : 'Business Name'} <span className="text-red-500">*</span>
         </label>
         <input
           type="text"
@@ -132,15 +194,15 @@ export default function ServiceProviderForm() {
           required
           value={formData.businessName}
           onChange={handleChange}
-          placeholder={t.serviceProviderForm.businessNamePlaceholder}
-          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
+          placeholder={language === 'fr' ? 'Entrez le nom de votre entreprise' : 'Enter your business name'}
+          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
         />
       </div>
 
       {/* Contact Name */}
       <div>
         <label htmlFor="contactName" className="block text-sm font-semibold text-gray-700 mb-2">
-          {t.serviceProviderForm.contactName} <span className="text-red-500">*</span>
+          {language === 'fr' ? 'Nom du Contact' : 'Contact Name'} <span className="text-red-500">*</span>
         </label>
         <input
           type="text"
@@ -149,15 +211,15 @@ export default function ServiceProviderForm() {
           required
           value={formData.contactName}
           onChange={handleChange}
-          placeholder={t.serviceProviderForm.contactNamePlaceholder}
-          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
+          placeholder={language === 'fr' ? 'Entrez votre nom complet' : 'Enter your full name'}
+          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
         />
       </div>
 
       {/* WhatsApp */}
       <div>
         <label htmlFor="whatsapp" className="block text-sm font-semibold text-gray-700 mb-2">
-          {t.serviceProviderForm.whatsapp} <span className="text-red-500">*</span>
+          {language === 'fr' ? 'Numéro WhatsApp' : 'WhatsApp Number'} <span className="text-red-500">*</span>
         </label>
         <input
           type="tel"
@@ -166,15 +228,15 @@ export default function ServiceProviderForm() {
           required
           value={formData.whatsapp}
           onChange={handleChange}
-          placeholder={t.serviceProviderForm.whatsappPlaceholder}
-          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
+          placeholder="+241 077 854 048"
+          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
         />
       </div>
 
-      {/* Facebook */}
+      {/* Facebook / Page Link */}
       <div>
         <label htmlFor="facebook" className="block text-sm font-semibold text-gray-700 mb-2">
-          {t.serviceProviderForm.facebook}
+          {language === 'fr' ? 'Facebook / Lien de Page (Optionnel)' : 'Facebook / Page Link (Optional)'}
         </label>
         <input
           type="text"
@@ -182,37 +244,57 @@ export default function ServiceProviderForm() {
           name="facebook"
           value={formData.facebook}
           onChange={handleChange}
-          placeholder={t.serviceProviderForm.facebookPlaceholder}
-          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
+          placeholder={language === 'fr' ? 'Lien vers votre profil ou page d\'entreprise Facebook' : 'Link to your Facebook profile or business page'}
+          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
         />
       </div>
 
-      {/* Service Type */}
+      {/* Type of Service */}
       <div>
-        <label htmlFor="serviceType" className="block text-sm font-semibold text-gray-700 mb-2">
-          {t.serviceProviderForm.serviceType} <span className="text-red-500">*</span>
+        <label className="block text-sm font-semibold text-gray-700 mb-2">
+          {language === 'fr' ? 'Type de Service' : 'Type of Service'} <span className="text-red-500">*</span>
         </label>
-        <select
-          id="serviceType"
-          name="serviceType"
-          required
-          value={formData.serviceType}
-          onChange={handleChange}
-          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
-        >
-          <option value="">{t.serviceProviderForm.serviceTypePlaceholder}</option>
-          {serviceTypes.map((type, index) => (
-            <option key={index} value={type}>
-              {type}
-            </option>
+        <p className="text-xs text-gray-500 mb-3">
+          {language === 'fr' ? 'Sélectionnez une ou plusieurs catégories' : 'Select one or more categories'}
+        </p>
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-3 max-h-60 overflow-y-auto border border-gray-300 rounded-lg p-4">
+          {serviceOptions.map((service, index) => (
+            <label key={index} className="flex items-center space-x-2 cursor-pointer">
+              <input
+                type="checkbox"
+                value={service}
+                checked={formData.serviceType.includes(service)}
+                onChange={(e) => handleMultiSelect(e, 'serviceType')}
+                className="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
+              />
+              <span className="text-sm text-gray-700">{service}</span>
+            </label>
           ))}
-        </select>
+        </div>
       </div>
 
-      {/* Location */}
+      {/* Other Service Type Description */}
+      {showOtherServiceType && (
+        <div>
+          <label htmlFor="otherServiceType" className="block text-sm font-semibold text-gray-700 mb-2">
+            {language === 'fr' ? 'Autre Type de Service (veuillez décrire)' : 'Other Service Type (please describe)'}
+          </label>
+          <input
+            type="text"
+            id="otherServiceType"
+            name="otherServiceType"
+            value={formData.otherServiceType}
+            onChange={handleChange}
+            placeholder={language === 'fr' ? 'Décrivez le type de service que vous offrez' : 'Describe the type of service you provide'}
+            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+          />
+        </div>
+      )}
+
+      {/* Location / Area */}
       <div>
         <label htmlFor="location" className="block text-sm font-semibold text-gray-700 mb-2">
-          {t.serviceProviderForm.location} <span className="text-red-500">*</span>
+          {language === 'fr' ? 'Localisation / Zone' : 'Location / Area'} <span className="text-red-500">*</span>
         </label>
         <input
           type="text"
@@ -221,58 +303,73 @@ export default function ServiceProviderForm() {
           required
           value={formData.location}
           onChange={handleChange}
-          placeholder={t.serviceProviderForm.locationPlaceholder}
-          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
+          placeholder={language === 'fr' ? 'Exemple : Okala, Delta, Akanda' : 'Example: Okala, Delta, Akanda'}
+          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
         />
       </div>
 
-      {/* Experience */}
+      {/* Years of Experience */}
       <div>
         <label htmlFor="experience" className="block text-sm font-semibold text-gray-700 mb-2">
-          {t.serviceProviderForm.experience}
+          {language === 'fr' ? 'Années d\'Expérience (Optionnel)' : 'Years of Experience (Optional)'}
         </label>
         <input
-          type="number"
+          type="text"
           id="experience"
           name="experience"
-          min="0"
           value={formData.experience}
           onChange={handleChange}
-          placeholder={t.serviceProviderForm.experiencePlaceholder}
-          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
+          placeholder={language === 'fr' ? 'Exemple : 5 ans' : 'Example: 5 years'}
+          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
         />
       </div>
 
-      {/* Support Needed */}
+      {/* Type of Support Needed */}
       <div>
-        <label className="block text-sm font-semibold text-gray-700 mb-3">
-          {t.serviceProviderForm.supportNeeded}
+        <label className="block text-sm font-semibold text-gray-700 mb-2">
+          {language === 'fr' ? 'Type de Soutien Nécessaire pour Améliorer Votre Entreprise' : 'Type of Support Needed to Improve Your Business'}
         </label>
-        <div className="space-y-3">
-          {[
-            { value: 'marketing', label: t.serviceProviderForm.marketing },
-            { value: 'leads', label: t.serviceProviderForm.leads },
-            { value: 'payment', label: t.serviceProviderForm.payment },
-            { value: 'training', label: t.serviceProviderForm.training },
-          ].map((option) => (
-            <label key={option.value} className="flex items-center">
+        <p className="text-xs text-gray-500 mb-3">
+          {language === 'fr' ? 'Sélectionnez toutes les options qui s\'appliquent' : 'Select all that apply'}
+        </p>
+        <div className="space-y-3 border border-gray-300 rounded-lg p-4">
+          {supportOptions.map((support, index) => (
+            <label key={index} className="flex items-center space-x-2 cursor-pointer">
               <input
                 type="checkbox"
-                value={option.value}
-                checked={formData.supportNeeded.includes(option.value)}
-                onChange={handleCheckboxChange}
-                className="w-5 h-5 text-emerald-600 border-gray-300 rounded focus:ring-emerald-500"
+                value={support}
+                checked={formData.supportNeeded.includes(support)}
+                onChange={(e) => handleMultiSelect(e, 'supportNeeded')}
+                className="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
               />
-              <span className="ml-3 text-gray-700">{option.label}</span>
+              <span className="text-sm text-gray-700">{support}</span>
             </label>
           ))}
         </div>
       </div>
 
-      {/* Average Price */}
+      {/* Other Support Description */}
+      {showOtherSupport && (
+        <div>
+          <label htmlFor="otherSupport" className="block text-sm font-semibold text-gray-700 mb-2">
+            {language === 'fr' ? 'Autre (veuillez décrire)' : 'Other (please describe)'}
+          </label>
+          <input
+            type="text"
+            id="otherSupport"
+            name="otherSupport"
+            value={formData.otherSupport}
+            onChange={handleChange}
+            placeholder={language === 'fr' ? 'Décrivez le type de soutien dont vous avez besoin' : 'Describe the type of support you need'}
+            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+          />
+        </div>
+      )}
+
+      {/* Average Price / Rate */}
       <div>
         <label htmlFor="averagePrice" className="block text-sm font-semibold text-gray-700 mb-2">
-          {t.serviceProviderForm.averagePrice}
+          {language === 'fr' ? 'Prix / Tarif Moyen (Optionnel)' : 'Average Price / Rate (Optional)'}
         </label>
         <input
           type="text"
@@ -280,15 +377,15 @@ export default function ServiceProviderForm() {
           name="averagePrice"
           value={formData.averagePrice}
           onChange={handleChange}
-          placeholder={t.serviceProviderForm.averagePricePlaceholder}
-          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
+          placeholder={language === 'fr' ? 'Exemple : 15 000 FCFA/heure ou 50 000 FCFA/projet' : 'Example: 15,000 FCFA/hour or 50,000 FCFA/project'}
+          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
         />
       </div>
 
-      {/* Description */}
+      {/* Short Description */}
       <div>
         <label htmlFor="description" className="block text-sm font-semibold text-gray-700 mb-2">
-          {t.serviceProviderForm.description}
+          {language === 'fr' ? 'Description Courte (Optionnel)' : 'Short Description (Optional)'}
         </label>
         <textarea
           id="description"
@@ -296,18 +393,20 @@ export default function ServiceProviderForm() {
           rows="4"
           value={formData.description}
           onChange={handleChange}
-          placeholder={t.serviceProviderForm.descriptionPlaceholder}
-          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
+          placeholder={language === 'fr' ? 'Décrivez brièvement votre entreprise et vos services' : 'Briefly describe your business and services'}
+          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
         />
       </div>
 
-      {/* Photo Upload Note */}
+      {/* Upload Photo/Logo Note */}
       <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-        <p className="text-sm text-blue-800">
-          📸 {t.serviceProviderForm.uploadPhoto}
+        <p className="text-sm text-blue-800 font-medium mb-1">
+          {language === 'fr' ? '📸 Télécharger Photo / Logo' : '📸 Upload Photo / Logo'}
         </p>
-        <p className="text-xs text-blue-600 mt-1">
-          After submission, we'll contact you to collect your business photos/logo.
+        <p className="text-sm text-blue-700">
+          {language === 'fr'
+            ? 'Après la soumission, nous vous contacterons pour collecter vos photos d\'entreprise ou votre logo afin de créer votre profil.'
+            : 'After submission, we will contact you to collect your business photos or logo to create your profile.'}
         </p>
       </div>
 
@@ -315,20 +414,23 @@ export default function ServiceProviderForm() {
       <button
         type="submit"
         disabled={isSubmitting}
-        className="w-full bg-emerald-600 text-white py-4 px-6 rounded-lg font-semibold hover:bg-emerald-700 transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+        className="w-full bg-blue-600 text-white py-4 px-6 rounded-lg font-semibold hover:bg-blue-700 transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
       >
-        {isSubmitting ? t.serviceProviderForm.submitting : t.serviceProviderForm.submit}
+        {isSubmitting
+          ? (language === 'fr' ? 'Envoi en cours...' : 'Submitting...')
+          : (language === 'fr' ? 'Soumettre l\'Inscription' : 'Submit Registration')
+        }
       </button>
 
       {/* Status Messages */}
       {submitStatus === 'success' && (
         <div className="p-4 bg-green-50 border border-green-200 rounded-lg text-green-800">
-          ✓ {t.common.success}
+          ✓ {language === 'fr' ? 'Votre inscription a été soumise avec succès ! Nous vous contacterons bientôt.' : 'Your registration has been submitted successfully! We will contact you soon.'}
         </div>
       )}
       {submitStatus === 'error' && (
         <div className="p-4 bg-red-50 border border-red-200 rounded-lg text-red-800">
-          ✗ {t.common.error}
+          ✗ {language === 'fr' ? 'Une erreur s\'est produite. Veuillez réessayer.' : 'An error occurred. Please try again.'}
         </div>
       )}
     </form>

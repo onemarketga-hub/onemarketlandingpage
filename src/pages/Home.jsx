@@ -282,8 +282,8 @@ export default function Home() {
           </div>
 
           {/* Service Category Icons */}
-          <div className="mb-8">
-            <div className="flex flex-wrap justify-center gap-8">
+          <div className="mb-8 max-w-5xl mx-auto">
+            <div className="grid grid-cols-4 md:grid-cols-8 gap-4 md:gap-6">
               {serviceCategories.map((category, index) => (
                 <button
                   key={index}
@@ -297,7 +297,7 @@ export default function Home() {
                   } transition-colors`}>
                     <category.icon className="w-8 h-8" />
                   </div>
-                  <span className={`text-sm font-medium ${
+                  <span className={`text-xs md:text-sm font-medium text-center ${
                     activeCategory === category.key ? 'border-b-2 border-blue-600' : ''
                   }`}>
                     {category.name}
@@ -308,12 +308,12 @@ export default function Home() {
           </div>
 
           {/* Service Pills */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 mx-auto max-w-5xl">
+          <div className="flex flex-wrap justify-center gap-4 mx-auto max-w-5xl">
             {popularServices.map((service, index) => (
               <Link
                 key={index}
                 to="/contact"
-                className="px-4 py-3 bg-white border-2 border-gray-900 rounded-full text-sm font-medium text-gray-900 hover:bg-gray-900 hover:text-white transition-all text-center"
+                className="px-6 py-3 bg-white border-2 border-gray-900 rounded-full text-sm font-medium text-gray-900 hover:bg-gray-900 hover:text-white transition-all"
               >
                 {service}
               </Link>
@@ -326,6 +326,7 @@ export default function Home() {
       <section className="relative py-16 px-4 sm:px-6 lg:px-8 overflow-hidden">
         {/* Decorative elements */}
         <div className="absolute left-0 top-1/2 -translate-y-1/2 w-32 h-32 bg-blue-200 rounded-full opacity-20 -translate-x-1/2"></div>
+        <div className="absolute right-5 top-20 w-20 h-20 bg-indigo-200 opacity-25" style={{clipPath: 'polygon(50% 0%, 0% 100%, 100% 100%)'}}></div>
         <div className="max-w-7xl mx-auto relative">
           <div className={`bg-gradient-to-br ${currentCard.bgColor} rounded-3xl overflow-hidden`}>
             <div className="grid lg:grid-cols-2 gap-8 p-8 lg:p-12 items-center">
@@ -368,38 +369,41 @@ export default function Home() {
       </section>
 
       {/* Stats Section - TaskRabbit Style */}
-      <section className="bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
+      <section className="relative bg-gray-50 py-12 px-4 sm:px-6 lg:px-8 overflow-hidden">
+        {/* Decorative elements */}
+        <div className="absolute left-0 top-1/2 w-16 h-16 bg-blue-200 rounded-lg opacity-20 rotate-12"></div>
+        <div className="absolute right-10 top-10 w-12 h-12 bg-indigo-300 rounded-full opacity-25"></div>
+        <div className="max-w-7xl mx-auto relative">
           <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12">
             <div className="text-center">
-              <div className="text-gray-900 font-semibold text-xs md:text-sm mb-1">
+              <div className="text-gray-900 font-semibold text-sm md:text-base mb-2">
                 {language === 'fr' ? 'Assemblages de Meubles :' : 'Furniture Assemblies:'}
               </div>
-              <div className="text-xl md:text-2xl font-bold text-blue-600">1,200+</div>
+              <div className="text-3xl md:text-4xl font-bold text-blue-600">1,200+</div>
             </div>
             <div className="text-center">
-              <div className="text-gray-900 font-semibold text-xs md:text-sm mb-1">
+              <div className="text-gray-900 font-semibold text-sm md:text-base mb-2">
                 {language === 'fr' ? 'Tâches de Déménagement :' : 'Moving tasks:'}
               </div>
-              <div className="text-xl md:text-2xl font-bold text-blue-600">850+</div>
+              <div className="text-3xl md:text-4xl font-bold text-blue-600">850+</div>
             </div>
             <div className="text-center">
-              <div className="text-gray-900 font-semibold text-xs md:text-sm mb-1">
+              <div className="text-gray-900 font-semibold text-sm md:text-base mb-2">
                 {language === 'fr' ? 'Articles Montés :' : 'Items mounted:'}
               </div>
-              <div className="text-xl md:text-2xl font-bold text-blue-600">950+</div>
+              <div className="text-3xl md:text-4xl font-bold text-blue-600">950+</div>
             </div>
             <div className="text-center">
-              <div className="text-gray-900 font-semibold text-xs md:text-sm mb-1">
+              <div className="text-gray-900 font-semibold text-sm md:text-base mb-2">
                 {language === 'fr' ? 'Réparations de Maison :' : 'Home Repairs:'}
               </div>
-              <div className="text-xl md:text-2xl font-bold text-blue-600">600+</div>
+              <div className="text-3xl md:text-4xl font-bold text-blue-600">600+</div>
             </div>
             <div className="text-center">
-              <div className="text-gray-900 font-semibold text-xs md:text-sm mb-1">
+              <div className="text-gray-900 font-semibold text-sm md:text-base mb-2">
                 {language === 'fr' ? 'Maisons Nettoyées :' : 'Homes cleaned:'}
               </div>
-              <div className="text-xl md:text-2xl font-bold text-blue-600">720+</div>
+              <div className="text-3xl md:text-4xl font-bold text-blue-600">720+</div>
             </div>
           </div>
         </div>
@@ -410,6 +414,7 @@ export default function Home() {
         {/* Decorative elements */}
         <div className="absolute right-0 top-20 w-20 h-20 bg-indigo-200 rounded-full opacity-30"></div>
         <div className="absolute right-10 bottom-20 w-16 h-16 bg-blue-300 rounded-full opacity-20"></div>
+        <div className="absolute left-5 bottom-40 w-14 h-14 bg-blue-100 rounded-lg opacity-30 rotate-45"></div>
         <div className="max-w-7xl mx-auto relative">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8">
             {language === 'fr' ? 'Projets Populaires' : 'Popular Projects'}
@@ -576,6 +581,7 @@ export default function Home() {
       <section className="relative bg-white py-16 px-4 sm:px-6 lg:px-8 overflow-hidden">
         {/* Decorative elements */}
         <div className="absolute left-10 top-10 w-24 h-24 bg-blue-100 rounded-full opacity-40"></div>
+        <div className="absolute right-20 bottom-10 w-18 h-18 bg-indigo-200 opacity-25" style={{clipPath: 'polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)'}}></div>
         <div className="max-w-7xl mx-auto relative">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-gray-900 mb-4">
@@ -644,6 +650,7 @@ export default function Home() {
       <section className="relative bg-white py-16 px-4 sm:px-6 lg:px-8 overflow-hidden">
         {/* Decorative elements */}
         <div className="absolute left-0 bottom-20 w-28 h-28 bg-indigo-100 rounded-full opacity-30 -translate-x-1/3"></div>
+        <div className="absolute right-0 top-10 w-16 h-16 bg-blue-200 rounded-lg opacity-20 rotate-12 translate-x-1/3"></div>
         <div className="max-w-7xl mx-auto relative">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-12 text-left">
             {language === 'fr'
@@ -807,8 +814,12 @@ export default function Home() {
       </section>
 
       {/* CTA Section */}
-      <section className="bg-blue-50 py-16 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto text-center">
+      <section className="relative bg-gradient-to-br from-blue-50 to-indigo-50 py-16 px-4 sm:px-6 lg:px-8 overflow-hidden">
+        {/* Decorative circles */}
+        <div className="absolute left-0 top-0 w-64 h-64 bg-blue-300 rounded-full opacity-20 -translate-x-1/2 -translate-y-1/2"></div>
+        <div className="absolute right-0 bottom-0 w-96 h-96 bg-indigo-300 rounded-full opacity-20 translate-x-1/2 translate-y-1/2"></div>
+
+        <div className="max-w-4xl mx-auto text-center relative">
           <h2 className="text-3xl font-bold text-gray-900 mb-4">
             {language === 'fr' ? 'Prêt à Commencer?' : 'Ready to Get Started?'}
           </h2>
