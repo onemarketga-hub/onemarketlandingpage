@@ -113,7 +113,9 @@ export default function Footer() {
                 </svg>
               </a>
               <a
-                href='#'
+                href='https://www.instagram.com/onemarketga/'
+                target='_blank'
+                rel='noopener noreferrer'
                 className='text-gray-300 hover:text-white transition-colors'
                 aria-label='Instagram'
               >
