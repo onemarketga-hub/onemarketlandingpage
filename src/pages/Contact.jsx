@@ -18,12 +18,12 @@ export default function Contact() {
       <section className="bg-white py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto text-center">
           <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-6">
-            {language === 'fr' ? 'Commencez Aujourd\'hui' : 'Get Started Today'}
+            {language === 'fr' ? 'Commencez Aujourd\'hui' : 'Get In Touch'}
           </h1>
           <p className="text-xl text-gray-600">
             {language === 'fr'
-              ? 'Que vous ayez besoin d\'un service ou que vous souhaitiez en offrir un, nous sommes là pour vous aider'
-              : 'Whether you need a service or want to offer one, we\'re here to help'}
+              ? 'Que vous ayez besoin d\'un service ou que vous souhaitiez en offrir un, nous sommes là pour vous aider.'
+              : 'Whether you need a service or want to offer one, we\'re here to help.'}
           </p>
         </div>
       </section>
@@ -38,7 +38,7 @@ export default function Contact() {
                 <EnvelopeIcon className="w-6 h-6 text-blue-600" />
               </div>
               <h3 className="text-lg font-bold text-gray-900 mb-2">
-                {language === 'fr' ? 'Email' : 'Email Us'}
+                {language === 'fr' ? 'Email' : 'Email'}
               </h3>
               <a href="mailto:info@onemarket.ga" className="text-blue-600 hover:text-blue-700">
                 info@onemarket.ga
@@ -51,9 +51,9 @@ export default function Contact() {
                 <PhoneIcon className="w-6 h-6 text-blue-600" />
               </div>
               <h3 className="text-lg font-bold text-gray-900 mb-2">
-                {language === 'fr' ? 'Téléphone' : 'Call Us'}
+                {language === 'fr' ? 'WhatsApp / Téléphone' : 'WhatsApp / Call'}
               </h3>
-              <a href="tel:+241077854048" className="text-blue-600 hover:text-blue-700">
+              <a href="https://wa.me/241077854048" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-700">
                 +241 077 854 048
               </a>
             </div>
@@ -105,12 +105,12 @@ export default function Contact() {
               <div>
                 <div className="mb-6">
                   <h2 className="text-2xl font-bold text-gray-900 mb-2">
-                    {language === 'fr' ? 'Demander un Service' : 'Request a Service'}
+                    {language === 'fr' ? 'QUESTIONNAIRE CLIENT — Demander un Service' : 'CLIENT QUESTIONNAIRE — Request a Service'}
                   </h2>
                   <p className="text-gray-600">
                     {language === 'fr'
-                      ? 'Remplissez le formulaire ci-dessous pour être mis en relation avec les meilleurs prestataires'
-                      : 'Fill out the form below and we\'ll connect you with the best providers'}
+                      ? 'Veuillez remplir le formulaire ci-dessous afin que nous puissions vous mettre en relation avec des prestataires vérifiés correspondant à vos besoins.'
+                      : 'Please fill out the form below so we can connect you with verified professionals that match your needs.'}
                   </p>
                 </div>
                 <ServiceRequestForm />
@@ -119,12 +119,12 @@ export default function Contact() {
               <div>
                 <div className="mb-6">
                   <h2 className="text-2xl font-bold text-gray-900 mb-2">
-                    {language === 'fr' ? 'S\'inscrire comme Prestataire' : 'Join as a Provider'}
+                    {language === 'fr' ? 'QUESTIONNAIRE PRESTATAIRE — S\'inscrire comme Prestataire de Services' : 'PROVIDER QUESTIONNAIRE — Join as a Provider'}
                   </h2>
                   <p className="text-gray-600">
                     {language === 'fr'
-                      ? 'Développez votre entreprise avec OneMarket dès aujourd\'hui'
-                      : 'Start growing your business with OneMarket today'}
+                      ? 'Développez votre activité dès aujourd\'hui avec OneMarket. Connectez-vous à de nouveaux clients, faites connaître vos services et obtenez une vérification pour renforcer la confiance dans votre communauté.'
+                      : 'Start growing your business with OneMarket today. Connect with new clients, promote your services, and get verified to build trust in your community.'}
                   </p>
                 </div>
                 <ServiceProviderForm />
@@ -133,31 +133,32 @@ export default function Contact() {
           </div>
 
           {/* Trust Indicators */}
-          <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-            <div>
-              <div className="text-3xl font-bold text-blue-600 mb-2">24/7</div>
-              <div className="text-gray-600 text-sm">
-                {language === 'fr' ? 'Support Disponible' : 'Support Available'}
+          <div className="mt-12">
+            <p className="text-center text-lg text-gray-700 font-medium mb-6">
+              {language === 'fr'
+                ? 'Un Service Client de Confiance — nous sommes là pour rendre votre expérience sur OneMarket simple et sans souci.'
+                : 'Customer Support You Can Count On — we\'re here to make your experience smooth and stress-free.'}
+            </p>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+              <div>
+                <div className="text-3xl font-bold text-blue-600 mb-2">1000+</div>
+                <div className="text-gray-600 text-sm">
+                  {language === 'fr' ? 'Prestataires de Services' : 'Service Providers'}
+                </div>
               </div>
-            </div>
-            <div>
-              <div className="text-3xl font-bold text-blue-600 mb-2">1000+</div>
-              <div className="text-gray-600 text-sm">
-                {language === 'fr' ? 'Prestataires' : 'Service Providers'}
+              <div>
+                <div className="text-3xl font-bold text-blue-600 mb-2">5000+</div>
+                <div className="text-gray-600 text-sm">
+                  {language === 'fr' ? 'Clients Satisfaits' : 'Happy Clients'}
+                </div>
               </div>
-            </div>
-            <div>
-              <div className="text-3xl font-bold text-blue-600 mb-2">5000+</div>
-              <div className="text-gray-600 text-sm">
-                {language === 'fr' ? 'Clients Satisfaits' : 'Happy Clients'}
-              </div>
-            </div>
-            <div>
-              <div className="text-3xl font-bold text-blue-600 mb-2">
-                {language === 'fr' ? 'Rapide' : 'Fast'}
-              </div>
-              <div className="text-gray-600 text-sm">
-                {language === 'fr' ? 'Temps de Réponse' : 'Response Time'}
+              <div>
+                <div className="text-3xl font-bold text-blue-600 mb-2">
+                  {language === 'fr' ? 'Rapide' : 'Fast'}
+                </div>
+                <div className="text-gray-600 text-sm">
+                  {language === 'fr' ? 'Temps de Réponse Rapide' : 'Response Time'}
+                </div>
               </div>
             </div>
           </div>
