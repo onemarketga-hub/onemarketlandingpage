@@ -124,9 +124,7 @@ export default function Contact() {
               <div>
                 <div className='mb-6'>
                   <p className='text-gray-600'>
-                    {language === 'fr'
-                      ? "Développez votre activité dès aujourd'hui avec OneMarket. Connectez-vous à de nouveaux clients, faites connaître vos services et obtenez une vérification pour renforcer la confiance dans votre communauté."
-                      : 'Start growing your business with OneMarket today. Connect with new clients, promote your services, and get verified to build trust in your community.'}
+                    {t.serviceProviderForm.intro}
                   </p>
                 </div>
                 <ServiceProviderForm />

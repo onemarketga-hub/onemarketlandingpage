@@ -139,7 +139,7 @@ export const translations = {
     // Service Provider Form
     serviceProviderForm: {
       title: 'Join as a Provider',
-      description: 'Start growing your business with OneMarket today. Connect with new clients, promote your services, and get verified to build trust in your community.',
+      intro: 'Start growing your business with OneMarket today. Connect with new clients, promote your services, and get verified to build trust in your community.',
       businessName: 'Business Name',
       businessNamePlaceholder: 'Enter your company or business name',
       contactName: 'Contact Name',
@@ -343,7 +343,7 @@ export const translations = {
     // Service Provider Form
     serviceProviderForm: {
       title: 'S\'inscrire comme Prestataire de Services',
-      description: 'Développez votre activité dès aujourd\'hui avec OneMarket. Connectez-vous à de nouveaux clients, faites connaître vos services et obtenez une vérification pour renforcer la confiance dans votre communauté.',
+      intro: 'Développez votre activité dès aujourd\'hui avec OneMarket. Connectez-vous à de nouveaux clients, faites connaître vos services et obtenez une vérification pour renforcer la confiance dans votre communauté.',
       businessName: 'Nom de l\'Entreprise',
       businessNamePlaceholder: 'Entrez le nom de votre entreprise',
       contactName: 'Nom du Contact',
