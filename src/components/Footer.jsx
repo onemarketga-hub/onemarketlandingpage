@@ -13,9 +13,9 @@ export default function Footer() {
           <div>
             <div className='flex items-center space-x-2 mb-4'>
               <img
-                src='/assets/logo.jpeg'
+                src='/assets/logo.svg'
                 alt='OneMarket Logo'
-                className='h-10 w-10 rounded-lg object-cover'
+                className='h-10 w-10 object-contain'
               />
               <span className='text-xl font-bold'>OneMarket</span>
             </div>

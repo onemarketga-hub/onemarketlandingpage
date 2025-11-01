@@ -20,13 +20,13 @@ export default function Navigation() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2">
+          <Link to="/" className="flex items-center space-x-3">
             <img
-              src="/assets/logo.jpeg"
+              src="/assets/logo.svg"
               alt="OneMarket Logo"
-              className="h-10 w-10 rounded-lg object-cover"
+              className="h-12 w-12 object-contain"
             />
-            <span className="text-xl font-bold text-gray-900">
+            <span className="text-2xl font-bold text-gray-900">
               OneMarket
             </span>
           </Link>
