@@ -578,21 +578,23 @@ export default function Home() {
             </button>
           </div>
 
-          {/* See All Services Info */}
-          <div className="mt-12 text-center">
-            <h3 className="text-2xl font-bold text-gray-900 mb-4">
-              {language === 'fr' ? 'Voir tous les services' : 'See all services'}
-            </h3>
-            <p className="text-lg text-gray-600 mb-6 max-w-3xl mx-auto">
-              {language === 'fr'
-                ? 'Découvrez toutes nos prestations OneMarket : aide, réparation, entretien, livraison et plus encore.'
-                : 'Discover all our OneMarket services: help, repair, maintenance, delivery and more.'}
-            </p>
-            <p className="text-xl font-semibold text-blue-600">
-              {language === 'fr'
-                ? 'OneMarket, la plateforme qui simplifie vos projets du quotidien. Réservez en ligne, un professionnel s\'occupe du reste.'
-                : 'OneMarket, the platform that simplifies your daily projects. Book online, a professional takes care of the rest.'}
-            </p>
+          {/* See All Services Section - Visible on all devices */}
+          <div className="mt-12 text-center bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-8 md:p-12">
+            <Link to="/contact" className="block">
+              <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
+                {language === 'fr' ? 'Voir tous les services' : 'See all services'}
+              </h3>
+              <p className="text-lg text-gray-600 mb-6 max-w-3xl mx-auto">
+                {language === 'fr'
+                  ? 'Découvrez toutes nos prestations OneMarket : aide, réparation, entretien, livraison et plus encore.'
+                  : 'Discover all our OneMarket services: help, repair, maintenance, delivery and more.'}
+              </p>
+              <p className="text-xl font-semibold text-blue-600">
+                {language === 'fr'
+                  ? 'OneMarket, la plateforme qui simplifie vos projets du quotidien. Réservez en ligne, un professionnel s\'occupe du reste.'
+                  : 'OneMarket, the platform that simplifies your daily projects. Book online, a professional takes care of the rest.'}
+              </p>
+            </Link>
           </div>
         </div>
       </section>
