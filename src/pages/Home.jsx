@@ -15,7 +15,7 @@ import { StarIcon as StarIconSolid } from '@heroicons/react/24/solid';
 
 export default function Home() {
   const { t, language } = useLanguage();
-  const [activeCategory, setActiveCategory] = useState('Assembly');
+  const [activeCategory, setActiveCategory] = useState('FurnitureAssembly');
   const [showAllProjects, setShowAllProjects] = useState(false);
   const [isDesktop, setIsDesktop] = useState(false);
 
@@ -29,8 +29,8 @@ export default function Home() {
   }, []);
 
   const serviceCategories = language === 'fr' ? [
-    { icon: WrenchScrewdriverIcon, name: 'Assemblage', key: 'Assembly' },
-    { icon: HomeIcon, name: 'Montage', key: 'Mounting' },
+    { icon: WrenchScrewdriverIcon, name: 'Montage de Meubles', key: 'FurnitureAssembly' },
+    { icon: HomeIcon, name: 'Installation Murale', key: 'WallInstallation' },
     { icon: TruckIcon, name: 'Déménagement', key: 'Moving' },
     { icon: SparklesIcon, name: 'Nettoyage', key: 'Cleaning' },
     { icon: HomeIcon, name: 'Aide Extérieure', key: 'Outdoor' },
@@ -38,8 +38,8 @@ export default function Home() {
     { icon: PaintBrushIcon, name: 'Peinture', key: 'Painting' },
     { icon: FireIcon, name: 'Tendances', key: 'Trending' },
   ] : [
-    { icon: WrenchScrewdriverIcon, name: 'Assembly', key: 'Assembly' },
-    { icon: HomeIcon, name: 'Mounting', key: 'Mounting' },
+    { icon: WrenchScrewdriverIcon, name: 'Furniture Assembly', key: 'FurnitureAssembly' },
+    { icon: HomeIcon, name: 'Wall Installation', key: 'WallInstallation' },
     { icon: TruckIcon, name: 'Moving', key: 'Moving' },
     { icon: SparklesIcon, name: 'Cleaning', key: 'Cleaning' },
     { icon: HomeIcon, name: 'Outdoor Help', key: 'Outdoor' },
@@ -49,22 +49,22 @@ export default function Home() {
   ];
 
   const featureCards = {
-    Assembly: {
-      title: language === 'fr' ? 'Assemblage' : 'Assembly',
+    FurnitureAssembly: {
+      title: language === 'fr' ? 'Fini les notices compliquées !' : 'No more complicated instructions!',
       description: language === 'fr'
-        ? 'Assemblez ou démontez des meubles en déballant, construisant et en effectuant le nettoyage nécessaire.'
-        : 'Assemble or disassemble furniture items by unboxing, building, and any cleanup.',
+        ? 'On déballe, on monte, on nettoie. vous n\'avez plus qu\'à profiter de vos nouveaux meubles.'
+        : 'We unpack, assemble, and clean up. All you have to do is enjoy your new furniture.',
       trending: language === 'fr'
-        ? 'Canapés incurvés, bureaux d\'ordinateur et matériaux durables.'
-        : 'Curved sofas, computer desks, and sustainable materials.',
+        ? 'En vogue : canapés incurvés, bureaux ergonomiques et matériaux éthiques.'
+        : 'In style: curved sofas, ergonomic desks and ethical materials.',
       image: 'https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=800&q=80',
       bgColor: 'from-blue-50 to-cyan-50',
     },
-    Mounting: {
-      title: language === 'fr' ? 'Montage' : 'Mounting',
+    WallInstallation: {
+      title: language === 'fr' ? 'Installation Murale' : 'Wall Installation',
       description: language === 'fr'
-        ? 'Montez en toute sécurité votre TV, étagères, art, miroirs, commodes et plus encore.'
-        : 'Securely mount your TV, shelves, art, mirrors, dressers, and more.',
+        ? 'Confiez vos tableaux, miroirs et décorations à des professionnels pour un rendu parfait.'
+        : 'Trust professionals with your paintings, mirrors and decorations for a perfect result.',
       trending: language === 'fr'
         ? 'Murs de galeries, TV d\'art et bibliothèques enveloppantes.'
         : 'Gallery walls, art TVs, and wraparound bookcases.',
@@ -253,15 +253,15 @@ export default function Home() {
           <div className="text-center mb-12">
             <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-gray-900 mb-6">
               {language === 'fr' ? (
-                <>Votre raccourci pour<br />faire avancer les choses.</>
+                <>Moins d'attente.<br />Plus d'action.</>
               ) : (
-                <>Your shortcut to<br />getting things done.</>
+                <>Less waiting.<br />More action.</>
               )}
             </h1>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               {language === 'fr'
-                ? 'OneMarket facilite la recherche et la réservation d\'aide pour toute tâche de votre liste de choses à faire.'
-                : 'OneMarket makes it simple to find and book help for any task on your to-do list.'}
+                ? 'Avec OneMarket, trouvez l\'aide qu\'il vous faut en quelques clics et passez à la vitesse supérieure.'
+                : 'With OneMarket, find the help you need in just a few clicks and move up a gear.'}
             </p>
           </div>
 
@@ -270,7 +270,7 @@ export default function Home() {
             <div className="flex items-stretch bg-white border-2 border-gray-300 rounded-full overflow-hidden shadow-lg hover:border-blue-600 transition-colors">
               <input
                 type="text"
-                placeholder={language === 'fr' ? 'De quelle aide avez-vous besoin?' : 'What do you need help with?'}
+                placeholder={language === 'fr' ? 'Que voulez-vous accomplir aujourd\'hui ?' : 'What do you want to accomplish today?'}
                 className="flex-1 px-8 py-4 text-lg outline-none"
               />
               <button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 flex items-center justify-center transition-colors">
@@ -416,9 +416,12 @@ export default function Home() {
         <div className="absolute right-10 bottom-20 w-16 h-16 bg-blue-300 rounded-full opacity-20"></div>
         <div className="absolute left-5 bottom-40 w-14 h-14 bg-blue-100 rounded-lg opacity-30 rotate-45"></div>
         <div className="max-w-7xl mx-auto relative">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8">
-            {language === 'fr' ? 'Projets Populaires' : 'Popular Projects'}
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            {language === 'fr' ? 'Les favoris de nos clients' : 'Our customers\' favorites'}
           </h2>
+          <p className="text-lg text-gray-600 mb-8">
+            {language === 'fr' ? 'Des services fiables, rapides et accessibles pour faciliter votre quotidien.' : 'Reliable, fast and accessible services to make your daily life easier.'}
+          </p>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
             {/* Furniture Assembly */}
             <Link to="/contact" className="group">
@@ -430,27 +433,27 @@ export default function Home() {
                 />
               </div>
               <h3 className="text-sm md:text-lg font-bold text-gray-900 mb-1">
-                {language === 'fr' ? 'Assemblage de Meubles' : 'Furniture Assembly'}
+                {language === 'fr' ? 'Montage de meubles' : 'Furniture Assembly'}
               </h3>
               <p className="text-gray-600 text-xs md:text-sm">
-                {language === 'fr' ? 'À partir de 49$' : 'Starting at $49'}
+                {language === 'fr' ? 'À partir de 49 FCFA' : 'Starting at 49 FCFA'}
               </p>
             </Link>
 
-            {/* Mount Art or Shelves */}
+            {/* Wall Installation / Mount Decorations */}
             <Link to="/contact" className="group">
               <div className="bg-gray-100 rounded-lg overflow-hidden mb-3">
                 <img
                   src="https://images.unsplash.com/photo-1513694203232-719a280e022f?w=400&q=80"
-                  alt="Mount Art"
+                  alt="Wall Installation"
                   className="w-full h-32 md:h-48 object-cover group-hover:scale-105 transition-transform duration-300"
                 />
               </div>
               <h3 className="text-sm md:text-lg font-bold text-gray-900 mb-1">
-                {language === 'fr' ? 'Montage d\'Art' : 'Mount Art'}
+                {language === 'fr' ? 'Installation murale / Pose de décorations murales' : 'Wall Installation / Wall Decoration Installation'}
               </h3>
               <p className="text-gray-600 text-xs md:text-sm">
-                {language === 'fr' ? 'À partir de 65$' : 'Starting at $65'}
+                {language === 'fr' ? 'À partir de 49 FCFA' : 'Starting at 49 FCFA'}
               </p>
             </Link>
 
@@ -464,10 +467,10 @@ export default function Home() {
                 />
               </div>
               <h3 className="text-sm md:text-lg font-bold text-gray-900 mb-1">
-                {language === 'fr' ? 'Montage TV' : 'Mount a TV'}
+                {language === 'fr' ? 'Installation de TV' : 'TV Installation'}
               </h3>
               <p className="text-gray-600 text-xs md:text-sm">
-                {language === 'fr' ? 'À partir de 69$' : 'Starting at $69'}
+                {language === 'fr' ? 'À partir de 69 FCFA' : 'Starting at 69 FCFA'}
               </p>
             </Link>
 
@@ -481,10 +484,10 @@ export default function Home() {
                 />
               </div>
               <h3 className="text-sm md:text-lg font-bold text-gray-900 mb-1">
-                {language === 'fr' ? 'Aide Déménagement' : 'Help Moving'}
+                {language === 'fr' ? 'Aide au déménagement' : 'Help Moving'}
               </h3>
               <p className="text-gray-600 text-xs md:text-sm">
-                {language === 'fr' ? 'À partir de 67$' : 'Starting at $67'}
+                {language === 'fr' ? 'À partir de 67 FCFA' : 'Starting at 67 FCFA'}
               </p>
             </Link>
 
@@ -573,6 +576,23 @@ export default function Home() {
                 : (language === 'fr' ? 'Voir Tous les Services' : 'Show All Services')
               }
             </button>
+          </div>
+
+          {/* See All Services Info */}
+          <div className="mt-12 text-center">
+            <h3 className="text-2xl font-bold text-gray-900 mb-4">
+              {language === 'fr' ? 'Voir tous les services' : 'See all services'}
+            </h3>
+            <p className="text-lg text-gray-600 mb-6 max-w-3xl mx-auto">
+              {language === 'fr'
+                ? 'Découvrez toutes nos prestations OneMarket : aide, réparation, entretien, livraison et plus encore.'
+                : 'Discover all our OneMarket services: help, repair, maintenance, delivery and more.'}
+            </p>
+            <p className="text-xl font-semibold text-blue-600">
+              {language === 'fr'
+                ? 'OneMarket, la plateforme qui simplifie vos projets du quotidien. Réservez en ligne, un professionnel s\'occupe du reste.'
+                : 'OneMarket, the platform that simplifies your daily projects. Book online, a professional takes care of the rest.'}
+            </p>
           </div>
         </div>
       </section>
@@ -821,12 +841,12 @@ export default function Home() {
 
         <div className="max-w-4xl mx-auto text-center relative">
           <h2 className="text-3xl font-bold text-gray-900 mb-4">
-            {language === 'fr' ? 'Prêt à Commencer?' : 'Ready to Get Started?'}
+            {language === 'fr' ? 'Rejoignez la Communauté OneMarket' : 'Join the OneMarket Community'}
           </h2>
           <p className="text-xl text-gray-600 mb-8">
             {language === 'fr'
-              ? 'Que vous ayez besoin d\'un service ou que vous souhaitiez en offrir un, nous sommes là pour vous aider.'
-              : 'Whether you need a service or want to offer one, we\'re here to help.'}
+              ? 'OneMarket prépare le futur des services locaux au Gabon. Inscrivez-vous pour suivre notre progression, être informé(e) du lancement et profiter d\'avantages exclusifs en tant qu\'early adopter.'
+              : 'OneMarket is preparing the future of local services in Gabon. Sign up to follow our progress, be informed of the launch and enjoy exclusive benefits as an early adopter.'}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link

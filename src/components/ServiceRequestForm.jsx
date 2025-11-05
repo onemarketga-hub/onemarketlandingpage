@@ -323,8 +323,13 @@ export default function ServiceRequestForm() {
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
       <h3 className="text-xl font-bold text-gray-900 mb-4">
-        {language === 'fr' ? 'Formulaire de Demande de Service' : 'Service Request Form'}
+        {language === 'fr' ? 'Formulaire d\'Intérêt OneMarket' : 'OneMarket Interest Form'}
       </h3>
+      <p className="text-gray-600 mb-6">
+        {language === 'fr'
+          ? 'Inscrivez-vous pour suivre notre progression, être informé(e) du lancement et profiter d\'avantages exclusifs en tant qu\'early adopter.'
+          : 'Sign up to follow our progress, be informed of the launch and enjoy exclusive benefits as an early adopter.'}
+      </p>
 
       {/* First Name */}
       <div>
@@ -592,7 +597,7 @@ export default function ServiceRequestForm() {
       {/* Additional Comments */}
       <div>
         <label htmlFor="comments" className="block text-sm font-semibold text-gray-700 mb-2">
-          {language === 'fr' ? 'Commentaires Supplémentaires' : 'Additional Comments'}
+          {language === 'fr' ? 'Complément d\'informations' : 'Additional Information'}
         </label>
         <textarea
           id="comments"
@@ -600,7 +605,7 @@ export default function ServiceRequestForm() {
           rows="4"
           value={formData.comments}
           onChange={handleChange}
-          placeholder={language === 'fr' ? 'Détails supplémentaires ou demandes particulières' : 'Any extra details or special requests'}
+          placeholder={language === 'fr' ? 'Décrivez brièvement le service ou le besoin que vous avez, ou comment OneMarket pourrait vous faciliter la vie.' : 'Briefly describe the service or need you have, or how OneMarket could make your life easier.'}
           className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
         />
       </div>
@@ -613,9 +618,16 @@ export default function ServiceRequestForm() {
       >
         {isSubmitting
           ? (language === 'fr' ? 'Envoi en cours...' : 'Submitting...')
-          : (language === 'fr' ? 'Soumettre la Demande' : 'Submit Request')
+          : (language === 'fr' ? 'Soumettre ma demande' : 'Submit my request')
         }
       </button>
+
+      {/* Info text */}
+      <p className="text-sm text-gray-500 text-center">
+        {language === 'fr'
+          ? 'En envoyant ce formulaire, vous rejoignez la liste d\'attente OneMarket et serez informé(e) du lancement officiel ainsi que des avantages réservés à nos premiers membres.'
+          : 'By submitting this form, you join the OneMarket waiting list and will be informed of the official launch as well as the benefits reserved for our first members.'}
+      </p>
 
       {/* Status Messages */}
       {submitStatus === 'success' && (

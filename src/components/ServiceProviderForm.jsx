@@ -61,18 +61,18 @@ export default function ServiceProviderForm() {
   ];
 
   const supportOptions = language === 'fr' ? [
-    'Obtenir Plus de Clients',
-    'Équipement Commercial',
-    'Soutien Marketing',
-    'Site Web',
-    'Meilleur Espace de Travail',
+    'Trouver plus de clients',
+    'Améliorer ma visibilité en ligne',
+    'Accéder à du matériel ou à des outils professionnels',
+    'Recevoir un soutien marketing (flyers, réseaux sociaux, profil OneMarket)',
+    'Créer ou améliorer ma présence digitale (photos, logo, page pro)',
     'Autre',
   ] : [
-    'Getting More Clients',
-    'Business Equipment',
-    'Marketing Support',
-    'Website',
-    'Better Workspace',
+    'Find more clients',
+    'Improve my online visibility',
+    'Access professional equipment or tools',
+    'Receive marketing support (flyers, social media, OneMarket profile)',
+    'Create or improve my digital presence (photos, logo, professional page)',
     'Other',
   ];
 
@@ -328,13 +328,18 @@ export default function ServiceProviderForm() {
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
       <h3 className="text-xl font-bold text-gray-900 mb-4">
-        {language === 'fr' ? 'Formulaire d\'Inscription de Prestataire' : 'Provider Registration Form'}
+        {language === 'fr' ? 'Formulaire d\'Inscription Prestataire' : 'Service Provider Registration Form'}
       </h3>
+      <p className="text-gray-600 mb-6">
+        {language === 'fr'
+          ? 'Rejoignez la liste officielle des prestataires OneMarket et développez votre activité.'
+          : 'Join the official list of OneMarket providers and grow your business.'}
+      </p>
 
       {/* Business Name */}
       <div>
         <label htmlFor="businessName" className="block text-sm font-semibold text-gray-700 mb-2">
-          {language === 'fr' ? 'Nom de l\'Entreprise' : 'Business Name'} <span className="text-red-500">*</span>
+          {language === 'fr' ? 'Nom de l\'entreprise' : 'Business Name'} <span className="text-red-500">*</span>
         </label>
         <input
           type="text"
@@ -345,7 +350,7 @@ export default function ServiceProviderForm() {
           value={formData.businessName}
           onChange={handleChange}
           onBlur={handleBlur}
-          placeholder={language === 'fr' ? 'Entrez le nom de votre entreprise' : 'Enter your business name'}
+          placeholder={language === 'fr' ? 'Entrez le nom de votre entreprise ou votre nom professionnel' : 'Enter your business name or professional name'}
           className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent ${
             errors.businessName ? 'border-red-500' : 'border-gray-300'
           }`}
@@ -358,7 +363,7 @@ export default function ServiceProviderForm() {
       {/* Contact Name */}
       <div>
         <label htmlFor="contactName" className="block text-sm font-semibold text-gray-700 mb-2">
-          {language === 'fr' ? 'Nom du Contact' : 'Contact Name'} <span className="text-red-500">*</span>
+          {language === 'fr' ? 'Nom du propriétaire / Responsable' : 'Owner / Manager Name'} <span className="text-red-500">*</span>
         </label>
         <input
           type="text"
@@ -369,7 +374,7 @@ export default function ServiceProviderForm() {
           value={formData.contactName}
           onChange={handleChange}
           onBlur={handleBlur}
-          placeholder={language === 'fr' ? 'Entrez votre nom complet' : 'Enter your full name'}
+          placeholder={language === 'fr' ? 'Entrez votre nom et prénom' : 'Enter your full name'}
           className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent ${
             errors.contactName ? 'border-red-500' : 'border-gray-300'
           }`}
@@ -379,10 +384,34 @@ export default function ServiceProviderForm() {
         )}
       </div>
 
+      {/* Location / Area */}
+      <div>
+        <label htmlFor="location" className="block text-sm font-semibold text-gray-700 mb-2">
+          {language === 'fr' ? 'Localisation / Zone d\'activité' : 'Location / Service Area'} <span className="text-red-500">*</span>
+        </label>
+        <input
+          type="text"
+          id="location"
+          name="location"
+          required
+          minLength="2"
+          value={formData.location}
+          onChange={handleChange}
+          onBlur={handleBlur}
+          placeholder={language === 'fr' ? 'Exemple : Okala, Delta, Akanda' : 'Example: Okala, Delta, Akanda'}
+          className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent ${
+            errors.location ? 'border-red-500' : 'border-gray-300'
+          }`}
+        />
+        {errors.location && (
+          <p className="mt-1 text-sm text-red-600">{errors.location}</p>
+        )}
+      </div>
+
       {/* WhatsApp */}
       <div>
         <label htmlFor="whatsapp" className="block text-sm font-semibold text-gray-700 mb-2">
-          {language === 'fr' ? 'Numéro WhatsApp' : 'WhatsApp Number'} <span className="text-red-500">*</span>
+          {language === 'fr' ? 'Numéro WhatsApp / Téléphone' : 'WhatsApp / Phone Number'} <span className="text-red-500">*</span>
         </label>
         <input
           type="tel"
@@ -405,7 +434,7 @@ export default function ServiceProviderForm() {
       {/* Facebook / Page Link */}
       <div>
         <label htmlFor="facebook" className="block text-sm font-semibold text-gray-700 mb-2">
-          {language === 'fr' ? 'Facebook / Lien de Page (Optionnel)' : 'Facebook / Page Link (Optional)'}
+          {language === 'fr' ? 'Page Facebook / Réseaux (optionnel)' : 'Facebook Page / Social Media (Optional)'}
         </label>
         <input
           type="text"
@@ -414,7 +443,7 @@ export default function ServiceProviderForm() {
           value={formData.facebook}
           onChange={handleChange}
           onBlur={handleBlur}
-          placeholder={language === 'fr' ? 'Lien vers votre profil ou page d\'entreprise Facebook' : 'Link to your Facebook profile or business page'}
+          placeholder={language === 'fr' ? 'Lien vers votre page d\'entreprise ou profil professionnel' : 'Link to your business page or professional profile'}
           className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent ${
             errors.facebook ? 'border-red-500' : 'border-gray-300'
           }`}
@@ -427,10 +456,10 @@ export default function ServiceProviderForm() {
       {/* Type of Service */}
       <div>
         <label className="block text-sm font-semibold text-gray-700 mb-2">
-          {language === 'fr' ? 'Type de Service' : 'Type of Service'} <span className="text-red-500">*</span>
+          {language === 'fr' ? 'Type de service proposé' : 'Type of service offered'} <span className="text-red-500">*</span>
         </label>
         <p className="text-xs text-gray-500 mb-3">
-          {language === 'fr' ? 'Sélectionnez une ou plusieurs catégories' : 'Select one or more categories'}
+          {language === 'fr' ? 'Sélectionnez une ou plusieurs catégories :' : 'Select one or more categories:'}
         </p>
         <div className="grid grid-cols-2 md:grid-cols-3 gap-3 max-h-60 overflow-y-auto border border-gray-300 rounded-lg p-4">
           {serviceOptions.map((service, index) => (
@@ -455,7 +484,7 @@ export default function ServiceProviderForm() {
       {showOtherServiceType && (
         <div>
           <label htmlFor="otherServiceType" className="block text-sm font-semibold text-gray-700 mb-2">
-            {language === 'fr' ? 'Autre Type de Service (veuillez décrire)' : 'Other Service Type (please describe)'}
+            {language === 'fr' ? 'Autre (précisez)' : 'Other (please specify)'}
           </label>
           <input
             type="text"
@@ -476,53 +505,13 @@ export default function ServiceProviderForm() {
         </div>
       )}
 
-      {/* Location / Area */}
-      <div>
-        <label htmlFor="location" className="block text-sm font-semibold text-gray-700 mb-2">
-          {language === 'fr' ? 'Localisation / Zone' : 'Location / Area'} <span className="text-red-500">*</span>
-        </label>
-        <input
-          type="text"
-          id="location"
-          name="location"
-          required
-          minLength="2"
-          value={formData.location}
-          onChange={handleChange}
-          onBlur={handleBlur}
-          placeholder={language === 'fr' ? 'Exemple : Okala, Delta, Akanda' : 'Example: Okala, Delta, Akanda'}
-          className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent ${
-            errors.location ? 'border-red-500' : 'border-gray-300'
-          }`}
-        />
-        {errors.location && (
-          <p className="mt-1 text-sm text-red-600">{errors.location}</p>
-        )}
-      </div>
-
-      {/* Years of Experience */}
-      <div>
-        <label htmlFor="experience" className="block text-sm font-semibold text-gray-700 mb-2">
-          {language === 'fr' ? 'Années d\'Expérience (Optionnel)' : 'Years of Experience (Optional)'}
-        </label>
-        <input
-          type="text"
-          id="experience"
-          name="experience"
-          value={formData.experience}
-          onChange={handleChange}
-          placeholder={language === 'fr' ? 'Exemple : 5 ans' : 'Example: 5 years'}
-          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-        />
-      </div>
-
       {/* Type of Support Needed */}
       <div>
         <label className="block text-sm font-semibold text-gray-700 mb-2">
-          {language === 'fr' ? 'Type de Soutien Nécessaire pour Améliorer Votre Entreprise' : 'Type of Support Needed to Improve Your Business'}
+          {language === 'fr' ? 'Soutien dont vous avez besoin pour développer votre activité' : 'Support you need to grow your business'} <span className="text-red-500">*</span>
         </label>
         <p className="text-xs text-gray-500 mb-3">
-          {language === 'fr' ? 'Sélectionnez toutes les options qui s\'appliquent' : 'Select all that apply'}
+          {language === 'fr' ? 'Cochez toutes les options qui s\'appliquent :' : 'Check all that apply:'}
         </p>
         <div className="space-y-3 border border-gray-300 rounded-lg p-4">
           {supportOptions.map((support, index) => (
@@ -544,7 +533,7 @@ export default function ServiceProviderForm() {
       {showOtherSupport && (
         <div>
           <label htmlFor="otherSupport" className="block text-sm font-semibold text-gray-700 mb-2">
-            {language === 'fr' ? 'Autre (veuillez décrire)' : 'Other (please describe)'}
+            {language === 'fr' ? 'Autre (précisez)' : 'Other (please specify)'}
           </label>
           <input
             type="text"
@@ -565,26 +554,10 @@ export default function ServiceProviderForm() {
         </div>
       )}
 
-      {/* Average Price / Rate */}
-      <div>
-        <label htmlFor="averagePrice" className="block text-sm font-semibold text-gray-700 mb-2">
-          {language === 'fr' ? 'Prix / Tarif Moyen (Optionnel)' : 'Average Price / Rate (Optional)'}
-        </label>
-        <input
-          type="text"
-          id="averagePrice"
-          name="averagePrice"
-          value={formData.averagePrice}
-          onChange={handleChange}
-          placeholder={language === 'fr' ? 'Exemple : 15 000 FCFA/heure ou 50 000 FCFA/projet' : 'Example: 15,000 FCFA/hour or 50,000 FCFA/project'}
-          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-        />
-      </div>
-
       {/* Short Description */}
       <div>
         <label htmlFor="description" className="block text-sm font-semibold text-gray-700 mb-2">
-          {language === 'fr' ? 'Description Courte (Optionnel)' : 'Short Description (Optional)'}
+          {language === 'fr' ? 'Décrivez votre entreprise ou vos services' : 'Describe your business or services'} <span className="text-red-500">*</span>
         </label>
         <textarea
           id="description"
@@ -592,7 +565,39 @@ export default function ServiceProviderForm() {
           rows="4"
           value={formData.description}
           onChange={handleChange}
-          placeholder={language === 'fr' ? 'Décrivez brièvement votre entreprise et vos services' : 'Briefly describe your business and services'}
+          placeholder={language === 'fr' ? 'Expliquez brièvement ce que vous faites et ce qui vous différencie.' : 'Briefly explain what you do and what sets you apart.'}
+          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+        />
+      </div>
+
+      {/* Average Price */}
+      <div>
+        <label htmlFor="averagePrice" className="block text-sm font-semibold text-gray-700 mb-2">
+          {language === 'fr' ? 'Tarif moyen (optionnel)' : 'Average rate (optional)'}
+        </label>
+        <input
+          type="text"
+          id="averagePrice"
+          name="averagePrice"
+          value={formData.averagePrice}
+          onChange={handleChange}
+          placeholder={language === 'fr' ? 'Exemple : 15 000 FCFA / heure ou 50 000 FCFA / projet' : 'Example: 15,000 FCFA / hour or 50,000 FCFA / project'}
+          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+        />
+      </div>
+
+      {/* Years of Experience */}
+      <div>
+        <label htmlFor="experience" className="block text-sm font-semibold text-gray-700 mb-2">
+          {language === 'fr' ? 'Années d\'expérience (optionnel)' : 'Years of experience (optional)'}
+        </label>
+        <input
+          type="text"
+          id="experience"
+          name="experience"
+          value={formData.experience}
+          onChange={handleChange}
+          placeholder={language === 'fr' ? 'Exemple : 2 ans, 5 ans, plus de 10 ans' : 'Example: 2 years, 5 years, more than 10 years'}
           className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
         />
       </div>
@@ -617,9 +622,16 @@ export default function ServiceProviderForm() {
       >
         {isSubmitting
           ? (language === 'fr' ? 'Envoi en cours...' : 'Submitting...')
-          : (language === 'fr' ? 'Soumettre l\'Inscription' : 'Submit Registration')
+          : (language === 'fr' ? 'Soumettre l\'inscription' : 'Submit registration')
         }
       </button>
+
+      {/* Info text */}
+      <p className="text-sm text-gray-500 text-center">
+        {language === 'fr'
+          ? 'En envoyant ce formulaire, vous rejoignez la liste officielle des prestataires OneMarket et serez contacté(e) avant le lancement pour la création de votre profil vérifié et vos premières opportunités.'
+          : 'By submitting this form, you join the official list of OneMarket providers and will be contacted before launch to create your verified profile and your first opportunities.'}
+      </p>
 
       {/* Status Messages */}
       {submitStatus === 'success' && (
