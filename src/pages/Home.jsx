@@ -507,7 +507,7 @@ export default function Home() {
                     {language === 'fr' ? 'Nettoyage' : 'Cleaning'}
                   </h3>
                   <p className="text-gray-600 text-xs md:text-sm">
-                    {language === 'fr' ? 'À partir de 49$' : 'Starting at $49'}
+                    {language === 'fr' ? 'À partir de 29 400 FCFA' : 'Starting at 29,400 FCFA'}
                   </p>
                 </Link>
 
@@ -524,7 +524,7 @@ export default function Home() {
                     {language === 'fr' ? 'Plomberie' : 'Plumbing'}
                   </h3>
                   <p className="text-gray-600 text-xs md:text-sm">
-                    {language === 'fr' ? 'À partir de 74$' : 'Starting at $74'}
+                    {language === 'fr' ? 'À partir de 44 400 FCFA' : 'Starting at 44,400 FCFA'}
                   </p>
                 </Link>
 
@@ -541,7 +541,7 @@ export default function Home() {
                     {language === 'fr' ? 'Électricité' : 'Electrical'}
                   </h3>
                   <p className="text-gray-600 text-xs md:text-sm">
-                    {language === 'fr' ? 'À partir de 69$' : 'Starting at $69'}
+                    {language === 'fr' ? 'À partir de 41 400 FCFA' : 'Starting at 41,400 FCFA'}
                   </p>
                 </Link>
 
@@ -558,7 +558,7 @@ export default function Home() {
                     {language === 'fr' ? 'Levage Lourd' : 'Heavy Lifting'}
                   </h3>
                   <p className="text-gray-600 text-xs md:text-sm">
-                    {language === 'fr' ? 'À partir de 61$' : 'Starting at $61'}
+                    {language === 'fr' ? 'À partir de 36 600 FCFA' : 'Starting at 36,600 FCFA'}
                   </p>
                 </Link>
               </>
