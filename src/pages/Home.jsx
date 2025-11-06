@@ -436,7 +436,7 @@ export default function Home() {
                 {language === 'fr' ? 'Montage de meubles' : 'Furniture Assembly'}
               </h3>
               <p className="text-gray-600 text-xs md:text-sm">
-                {language === 'fr' ? 'À partir de 49 FCFA' : 'Starting at 49 FCFA'}
+                {language === 'fr' ? 'À partir de 29 400 FCFA' : 'Starting at 29,400 FCFA'}
               </p>
             </Link>
 
@@ -453,7 +453,7 @@ export default function Home() {
                 {language === 'fr' ? 'Installation murale / Pose de décorations murales' : 'Wall Installation / Wall Decoration Installation'}
               </h3>
               <p className="text-gray-600 text-xs md:text-sm">
-                {language === 'fr' ? 'À partir de 49 FCFA' : 'Starting at 49 FCFA'}
+                {language === 'fr' ? 'À partir de 29 400 FCFA' : 'Starting at 29,400 FCFA'}
               </p>
             </Link>
 
@@ -470,7 +470,7 @@ export default function Home() {
                 {language === 'fr' ? 'Installation de TV' : 'TV Installation'}
               </h3>
               <p className="text-gray-600 text-xs md:text-sm">
-                {language === 'fr' ? 'À partir de 69 FCFA' : 'Starting at 69 FCFA'}
+                {language === 'fr' ? 'À partir de 41 400 FCFA' : 'Starting at 41,400 FCFA'}
               </p>
             </Link>
 
@@ -487,7 +487,7 @@ export default function Home() {
                 {language === 'fr' ? 'Aide au déménagement' : 'Help Moving'}
               </h3>
               <p className="text-gray-600 text-xs md:text-sm">
-                {language === 'fr' ? 'À partir de 67 FCFA' : 'Starting at 67 FCFA'}
+                {language === 'fr' ? 'À partir de 40 200 FCFA' : 'Starting at 40,200 FCFA'}
               </p>
             </Link>
 
