@@ -26,7 +26,7 @@ export default function Navigation() {
               alt='OneMarket Logo'
               className='h-12 w-12 object-contain'
             />
-            <span className='text-2xl font-bold text-gray-900'>OneMarkets</span>
+            <span className='text-2xl font-bold text-gray-900'>OneMarket</span>
           </Link>
 
           {/* Desktop Navigation */}
