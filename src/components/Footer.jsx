@@ -157,8 +157,8 @@ export default function Footer() {
 
             <p className='text-gray-400 text-sm'>
               {language === 'fr'
-                ? 'Fait avec amour au Gabon ❤️'
-                : 'Made with love in Gabon ❤️'}
+                ? 'Développé par JsonPlay Technologies'
+                : 'Developed by JsonPlay Technologies'}
             </p>
           </div>
         </div>
