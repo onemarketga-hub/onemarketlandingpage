@@ -10,6 +10,7 @@ import {
   ScissorsIcon,
   PaintBrushIcon,
   FireIcon,
+  XMarkIcon,
 } from '@heroicons/react/24/outline';
 import { StarIcon as StarIconSolid } from '@heroicons/react/24/solid';
 
@@ -18,6 +19,7 @@ export default function Home() {
   const [activeCategory, setActiveCategory] = useState('FurnitureAssembly');
   const [showAllProjects, setShowAllProjects] = useState(false);
   const [isDesktop, setIsDesktop] = useState(false);
+  const [showAppModal, setShowAppModal] = useState(false);
 
   useEffect(() => {
     const handleResize = () => {
@@ -359,12 +361,12 @@ export default function Home() {
                     </p>
                   </div>
                 </div>
-                <Link
-                  to="/contact"
+                <button
+                  onClick={() => setShowAppModal(true)}
                   className="inline-block px-8 py-4 bg-blue-600 text-white font-bold rounded-xl hover:bg-blue-700 hover:shadow-lg transition-all duration-300 hover:scale-105"
                 >
                   {language === 'fr' ? '👉 Commencez Maintenant' : '👉 Get Started Now'}
-                </Link>
+                </button>
               </div>
               <div>
                 <img
@@ -939,6 +941,74 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* App Download Modal */}
+      {showAppModal && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-2xl shadow-2xl max-w-md w-full p-8 relative animate-in fade-in zoom-in">
+            {/* Close button */}
+            <button
+              onClick={() => setShowAppModal(false)}
+              className="absolute top-4 right-4 p-2 hover:bg-gray-100 rounded-full transition-colors"
+            >
+              <XMarkIcon className="w-6 h-6 text-gray-600" />
+            </button>
+
+            {/* Modal content */}
+            <div className="text-center">
+              <div className="text-5xl mb-4">📱</div>
+              <h2 className="text-2xl font-bold text-gray-900 mb-2">
+                {language === 'fr' ? 'Téléchargez OneMarket' : 'Download OneMarket'}
+              </h2>
+              <p className="text-gray-600 mb-8">
+                {language === 'fr'
+                  ? 'Obtenez une meilleure expérience avec notre application mobile.'
+                  : 'Get a better experience with our mobile app.'}
+              </p>
+
+              <div className="space-y-3">
+                {/* User App */}
+                <a
+                  href="https://play.google.com/store/apps/details?id=com.onemarket.user"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block w-full px-6 py-3 bg-blue-600 text-white font-semibold rounded-xl hover:bg-blue-700 transition-colors"
+                >
+                  {language === 'fr' ? '👤 Client OneMarket' : '👤 OneMarket User'}
+                </a>
+
+                {/* Business App */}
+                <a
+                  href="https://play.google.com/store/apps/details?id=com.onemarket.business"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block w-full px-6 py-3 bg-green-600 text-white font-semibold rounded-xl hover:bg-green-700 transition-colors"
+                >
+                  {language === 'fr' ? '🏢 OneMarket Business' : '🏢 OneMarket Business'}
+                </a>
+
+                {/* Pro App */}
+                <a
+                  href="https://play.google.com/store/apps/details?id=com.onemarket.pro"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block w-full px-6 py-3 bg-purple-600 text-white font-semibold rounded-xl hover:bg-purple-700 transition-colors"
+                >
+                  {language === 'fr' ? '⭐ OneMarket Pro' : '⭐ OneMarket Pro'}
+                </a>
+              </div>
+
+              {/* Continue on web option */}
+              <button
+                onClick={() => setShowAppModal(false)}
+                className="w-full mt-4 px-6 py-3 border-2 border-gray-300 text-gray-700 font-semibold rounded-xl hover:border-gray-400 transition-colors"
+              >
+                {language === 'fr' ? 'Continuer sur le web' : 'Continue on web'}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
