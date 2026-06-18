@@ -858,6 +858,87 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* App Download Section */}
+      <section className="bg-gray-50 py-16 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              {language === 'fr' ? '📱 Téléchargez l\'Application OneMarket' : '📱 Download OneMarket App'}
+            </h2>
+            <p className="text-lg text-gray-600">
+              {language === 'fr'
+                ? 'Accédez aux services à partir de votre téléphone, n\'importe où, n\'importe quand.'
+                : 'Access services from your phone, anytime, anywhere.'}
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {/* User App */}
+            <div className="bg-white rounded-xl shadow-lg p-8 text-center hover:shadow-xl transition-shadow">
+              <div className="text-5xl mb-4">👤</div>
+              <h3 className="text-xl font-bold text-gray-900 mb-2">
+                {language === 'fr' ? 'OneMarket Client' : 'OneMarket User'}
+              </h3>
+              <p className="text-gray-600 text-sm mb-6">
+                {language === 'fr'
+                  ? 'Trouvez et réservez les meilleurs services locaux.'
+                  : 'Find and book the best local services.'}
+              </p>
+              <a
+                href="https://play.google.com/store/apps/details?id=com.onemarket.user"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center px-6 py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition-colors"
+              >
+                {language === 'fr' ? '📥 Télécharger' : '📥 Download'}
+              </a>
+            </div>
+
+            {/* Business App */}
+            <div className="bg-white rounded-xl shadow-lg p-8 text-center hover:shadow-xl transition-shadow">
+              <div className="text-5xl mb-4">🏢</div>
+              <h3 className="text-xl font-bold text-gray-900 mb-2">
+                {language === 'fr' ? 'OneMarket Business' : 'OneMarket Business'}
+              </h3>
+              <p className="text-gray-600 text-sm mb-6">
+                {language === 'fr'
+                  ? 'Gérez votre entreprise et vos clients facilement.'
+                  : 'Manage your business and customers easily.'}
+              </p>
+              <a
+                href="https://play.google.com/store/apps/details?id=com.onemarket.business"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center px-6 py-3 bg-green-600 text-white rounded-lg font-semibold hover:bg-green-700 transition-colors"
+              >
+                {language === 'fr' ? '📥 Télécharger' : '📥 Download'}
+              </a>
+            </div>
+
+            {/* Pro App */}
+            <div className="bg-white rounded-xl shadow-lg p-8 text-center hover:shadow-xl transition-shadow border-2 border-blue-600">
+              <div className="text-5xl mb-4">⭐</div>
+              <h3 className="text-xl font-bold text-gray-900 mb-2">
+                {language === 'fr' ? 'OneMarket Pro' : 'OneMarket Pro'}
+              </h3>
+              <p className="text-gray-600 text-sm mb-6">
+                {language === 'fr'
+                  ? 'Accès premium avec fonctionnalités avancées.'
+                  : 'Premium access with advanced features.'}
+              </p>
+              <a
+                href="https://play.google.com/store/apps/details?id=com.onemarket.pro"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center px-6 py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition-colors"
+              >
+                {language === 'fr' ? '📥 Télécharger' : '📥 Download'}
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }

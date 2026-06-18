@@ -289,33 +289,30 @@ export default function Contact() {
 
           {/* Trust Indicators */}
           <div className='mt-12'>
-            <p className='text-center text-lg text-gray-700 font-medium mb-6'>
-              {language === 'fr'
-                ? 'Un Service Client de Confiance — nous sommes là pour rendre votre expérience sur OneMarket simple et sans souci.'
-                : "Customer Support You Can Count On — we're here to make your experience smooth and stress-free."}
-            </p>
             <div className='grid grid-cols-1 md:grid-cols-3 gap-6 text-center'>
               <div>
-                <div className='text-3xl font-bold text-blue-600 mb-2'>
-                  1000+
+                <div className='text-lg font-semibold text-blue-600 mb-2'>
+                  {language === 'fr' ? 'Prestataires Vérifiés' : 'Verified Providers'}
                 </div>
                 <div className='text-gray-600 text-sm'>
                   {language === 'fr'
-                    ? 'Prestataires de Services'
-                    : 'Service Providers'}
+                    ? 'Une communauté croissante de professionnels qualifiés et fiables.'
+                    : 'A growing community of qualified and trustworthy professionals.'}
                 </div>
               </div>
               <div>
-                <div className='text-3xl font-bold text-blue-600 mb-2'>
-                  5000+
+                <div className='text-lg font-semibold text-blue-600 mb-2'>
+                  {language === 'fr' ? 'Clients Satisfaits' : 'Satisfied Clients'}
                 </div>
                 <div className='text-gray-600 text-sm'>
-                  {language === 'fr' ? 'Clients Satisfaits' : 'Happy Clients'}
+                  {language === 'fr'
+                    ? 'Des milliers de clients qui font confiance à OneMarket chaque jour.'
+                    : 'Thousands of clients trust OneMarket every day.'}
                 </div>
               </div>
               <div>
-                <div className='text-3xl font-bold text-blue-600 mb-2'>
-                  {language === 'fr' ? 'Rapide' : 'Fast'}
+                <div className='text-lg font-semibold text-blue-600 mb-2'>
+                  {language === 'fr' ? 'Support Rapide' : 'Quick Support'}
                 </div>
                 <div className='text-gray-600 text-sm'>
                   {language === 'fr'
