@@ -148,7 +148,7 @@ export default function About() {
               <div className="inline-flex items-center justify-center w-16 h-16 bg-white/20 rounded-full mb-4">
                 <UserGroupIcon className="w-8 h-8 text-white" />
               </div>
-              <div className="text-4xl font-bold text-white mb-2">1000+</div>
+
               <div className="text-blue-100">
                 {language === 'fr' ? 'Prestataires de Services' : 'Service Providers'}
               </div>
@@ -157,7 +157,7 @@ export default function About() {
               <div className="inline-flex items-center justify-center w-16 h-16 bg-white/20 rounded-full mb-4">
                 <CheckCircleIcon className="w-8 h-8 text-white" />
               </div>
-              <div className="text-4xl font-bold text-white mb-2">5000+</div>
+
               <div className="text-blue-100">
                 {language === 'fr' ? 'Clients Satisfaits' : 'Happy Clients'}
               </div>
@@ -166,7 +166,7 @@ export default function About() {
               <div className="inline-flex items-center justify-center w-16 h-16 bg-white/20 rounded-full mb-4">
                 <BuildingStorefrontIcon className="w-8 h-8 text-white" />
               </div>
-              <div className="text-4xl font-bold text-white mb-2">50+</div>
+
               <div className="text-blue-100">
                 {language === 'fr' ? 'Catégories de Services' : 'Service Categories'}
               </div>
@@ -175,7 +175,7 @@ export default function About() {
               <div className="inline-flex items-center justify-center w-16 h-16 bg-white/20 rounded-full mb-4">
                 <TrophyIcon className="w-8 h-8 text-white" />
               </div>
-              <div className="text-4xl font-bold text-white mb-2">99%</div>
+
               <div className="text-blue-100">
                 {language === 'fr' ? 'Taux de Satisfaction' : 'Satisfaction Rate'}
               </div>

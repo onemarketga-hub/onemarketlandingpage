@@ -233,47 +233,45 @@ export default function Home() {
 
   return (
     <div className="bg-white">
-      {/* Hero Section - TaskRabbit Style */}
-      <section className="relative bg-white py-16 px-4 sm:px-6 lg:px-8 overflow-hidden">
-        {/* Decorative Blobs */}
-        <div className="absolute left-0 top-0 -translate-x-1/2 w-96 h-96 bg-blue-600 rounded-full opacity-20"></div>
-        <div className="absolute left-0 top-32 -translate-x-1/3 w-64 h-64 bg-blue-500 rounded-full opacity-10"></div>
-        <div className="absolute right-0 top-0 translate-x-1/2 w-[500px] h-[500px] bg-gradient-to-br from-blue-500 to-blue-600 rounded-full opacity-20"></div>
-        <div className="absolute right-32 top-20 w-32 h-32 border-8 border-yellow-400 rounded-full opacity-50"></div>
-        <div className="absolute right-20 bottom-32 w-16 h-16 opacity-30">
-          <div className="grid grid-cols-3 gap-2">
-            {[...Array(9)].map((_, i) => (
-              <div key={i} className="w-2 h-2 bg-gray-800 rounded-full"></div>
-            ))}
-          </div>
-        </div>
+      {/* Hero Section - Premium Style */}
+      <section className="relative bg-gradient-to-br from-blue-600 via-blue-500 to-indigo-600 py-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
+        {/* Decorative Blobs - Enhanced */}
+        <div className="absolute left-0 top-0 -translate-x-1/2 w-96 h-96 bg-blue-400 rounded-full opacity-30 blur-3xl"></div>
+        <div className="absolute left-0 top-32 -translate-x-1/3 w-64 h-64 bg-cyan-400 rounded-full opacity-20 blur-3xl"></div>
+        <div className="absolute right-0 top-0 translate-x-1/2 w-[500px] h-[500px] bg-indigo-400 rounded-full opacity-25 blur-3xl"></div>
+        <div className="absolute right-32 top-20 w-32 h-32 border-4 border-yellow-300 rounded-full opacity-30 animate-pulse"></div>
 
         <div className="relative max-w-6xl mx-auto">
           {/* Main Headline */}
           <div className="text-center mb-12">
-            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-gray-900 mb-6">
+            <div className="inline-block mb-4 px-4 py-2 bg-blue-400 bg-opacity-30 rounded-full border border-blue-300">
+              <p className="text-blue-100 text-sm font-semibold uppercase tracking-wider">
+                {language === 'fr' ? '🚀 La solution complète' : '🚀 The Complete Solution'}
+              </p>
+            </div>
+            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black text-white mb-6 leading-tight">
               {language === 'fr' ? (
-                <>Moins d'attente.<br />Plus d'action.</>
+                <>Moins d'attente.<br /><span className="text-yellow-300">Plus d'action.</span></>
               ) : (
-                <>Less waiting.<br />More action.</>
+                <>Less waiting.<br /><span className="text-yellow-300">More action.</span></>
               )}
             </h1>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-xl text-blue-50 max-w-3xl mx-auto leading-relaxed">
               {language === 'fr'
-                ? 'Avec OneMarket, trouvez l\'aide qu\'il vous faut en quelques clics et passez à la vitesse supérieure.'
-                : 'With OneMarket, find the help you need in just a few clicks and move up a gear.'}
+                ? 'Trouvez les meilleurs prestataires en quelques clics. Qualité garantie, prix justes, service rapide.'
+                : 'Find the best service providers in just a few clicks. Quality guaranteed, fair prices, fast service.'}
             </p>
           </div>
 
           {/* Search Bar */}
           <div className="max-w-4xl mx-auto mb-16">
-            <div className="flex items-stretch bg-white border-2 border-gray-300 rounded-full overflow-hidden shadow-lg hover:border-blue-600 transition-colors">
+            <div className="flex items-stretch bg-white rounded-2xl overflow-hidden shadow-2xl hover:shadow-3xl transition-all duration-300 group">
               <input
                 type="text"
                 placeholder={language === 'fr' ? 'Que voulez-vous accomplir aujourd\'hui ?' : 'What do you want to accomplish today?'}
-                className="flex-1 px-8 py-4 text-lg outline-none"
+                className="flex-1 px-8 py-4 text-lg outline-none text-gray-900 placeholder-gray-500"
               />
-              <button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 flex items-center justify-center transition-colors">
+              <button className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-8 py-4 flex items-center justify-center transition-all duration-300 font-semibold">
                 <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                 </svg>
@@ -282,23 +280,25 @@ export default function Home() {
           </div>
 
           {/* Service Category Icons */}
-          <div className="mb-8 max-w-5xl mx-auto">
+          <div className="mb-12 max-w-5xl mx-auto">
             <div className="grid grid-cols-4 md:grid-cols-8 gap-4 md:gap-6">
               {serviceCategories.map((category, index) => (
                 <button
                   key={index}
                   onClick={() => setActiveCategory(category.key)}
-                  className={`flex flex-col items-center gap-2 group ${
-                    activeCategory === category.key ? 'text-blue-600' : 'text-gray-600 hover:text-blue-600'
+                  className={`flex flex-col items-center gap-2 group transition-all duration-300 ${
+                    activeCategory === category.key ? 'text-blue-50' : 'text-blue-100 hover:text-blue-50'
                   }`}
                 >
-                  <div className={`p-3 rounded-full ${
-                    activeCategory === category.key ? 'bg-blue-50' : 'bg-gray-100 group-hover:bg-blue-50'
-                  } transition-colors`}>
+                  <div className={`p-4 rounded-2xl transition-all duration-300 ${
+                    activeCategory === category.key 
+                      ? 'bg-white text-blue-600 shadow-xl scale-110' 
+                      : 'bg-blue-400 bg-opacity-40 text-white group-hover:bg-opacity-60'
+                  }`}>
                     <category.icon className="w-8 h-8" />
                   </div>
-                  <span className={`text-xs md:text-sm font-medium text-center ${
-                    activeCategory === category.key ? 'border-b-2 border-blue-600' : ''
+                  <span className={`text-xs md:text-sm font-semibold text-center transition-all ${
+                    activeCategory === category.key ? 'text-white' : 'text-blue-100'
                   }`}>
                     {category.name}
                   </span>
@@ -307,13 +307,13 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Service Pills */}
+          {/* CTA Buttons */}
           <div className="flex flex-wrap justify-center gap-4 mx-auto max-w-5xl">
             {popularServices.map((service, index) => (
               <Link
                 key={index}
                 to="/contact"
-                className="px-6 py-3 bg-white border-2 border-gray-900 rounded-full text-sm font-medium text-gray-900 hover:bg-gray-900 hover:text-white transition-all"
+                className="px-6 py-3 bg-white text-blue-600 rounded-full text-sm font-bold hover:shadow-xl hover:scale-105 transition-all duration-300 border-2 border-transparent"
               >
                 {service}
               </Link>
@@ -323,44 +323,54 @@ export default function Home() {
       </section>
 
       {/* Featured Service Card Section - Dynamic */}
-      <section className="relative py-16 px-4 sm:px-6 lg:px-8 overflow-hidden">
+      <section className="relative py-20 px-4 sm:px-6 lg:px-8 overflow-hidden bg-gradient-to-b from-gray-50 to-white">
         {/* Decorative elements */}
-        <div className="absolute left-0 top-1/2 -translate-y-1/2 w-32 h-32 bg-blue-200 rounded-full opacity-20 -translate-x-1/2"></div>
-        <div className="absolute right-5 top-20 w-20 h-20 bg-indigo-200 opacity-25" style={{clipPath: 'polygon(50% 0%, 0% 100%, 100% 100%)'}}></div>
+        <div className="absolute left-0 top-1/2 -translate-y-1/2 w-48 h-48 bg-blue-200 rounded-full opacity-15 blur-3xl -translate-x-1/2"></div>
+        <div className="absolute right-5 top-20 w-32 h-32 bg-indigo-200 opacity-20 blur-3xl" style={{clipPath: 'polygon(50% 0%, 0% 100%, 100% 100%)'}}></div>
         <div className="max-w-7xl mx-auto relative">
-          <div className={`bg-gradient-to-br ${currentCard.bgColor} rounded-3xl overflow-hidden`}>
-            <div className="grid lg:grid-cols-2 gap-8 p-8 lg:p-12 items-center">
+          <div className={`bg-gradient-to-br ${currentCard.bgColor} rounded-3xl overflow-hidden shadow-2xl hover:shadow-3xl transition-all duration-500`}>
+            <div className="grid lg:grid-cols-2 gap-12 p-8 lg:p-16 items-center">
               <div>
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">
+                <h2 className="text-4xl lg:text-5xl font-black text-gray-900 mb-8 leading-tight">
                   {currentCard.title}
                 </h2>
-                <div className="space-y-4 mb-6">
-                  <div className="flex items-start gap-3">
-                    <svg className="w-5 h-5 text-blue-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                    </svg>
-                    <p className="text-gray-700">
+                <div className="space-y-6 mb-8">
+                  <div className="flex items-start gap-4">
+                    <div className="flex-shrink-0 w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center">
+                      <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                      </svg>
+                    </div>
+                    <p className="text-lg text-gray-700 leading-relaxed">
                       {currentCard.description}
                     </p>
                   </div>
-                  <div className="flex items-start gap-3">
-                    <svg className="w-5 h-5 text-blue-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                    </svg>
-                    <p className="text-gray-700">
-                      <span className="font-semibold">
-                        {language === 'fr' ? 'Tendances actuelles : ' : 'Now Trending: '}
+                  <div className="flex items-start gap-4">
+                    <div className="flex-shrink-0 w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center">
+                      <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                      </svg>
+                    </div>
+                    <p className="text-lg text-gray-700 leading-relaxed">
+                      <span className="font-black text-gray-900">
+                        {language === 'fr' ? '✨ Tendances actuelles: ' : '✨ Now Trending: '}
                       </span>
                       {currentCard.trending}
                     </p>
                   </div>
                 </div>
+                <Link
+                  to="/contact"
+                  className="inline-block px-8 py-4 bg-blue-600 text-white font-bold rounded-xl hover:bg-blue-700 hover:shadow-lg transition-all duration-300 hover:scale-105"
+                >
+                  {language === 'fr' ? '👉 Commencez Maintenant' : '👉 Get Started Now'}
+                </Link>
               </div>
               <div>
                 <img
                   src={currentCard.image}
                   alt={currentCard.title}
-                  className="w-full h-80 object-cover rounded-2xl"
+                  className="w-full h-96 object-cover rounded-2xl shadow-xl hover:shadow-2xl transition-shadow duration-300"
                 />
               </div>
             </div>
@@ -368,126 +378,101 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Stats Section - TaskRabbit Style */}
-      <section className="relative bg-gray-50 py-12 px-4 sm:px-6 lg:px-8 overflow-hidden">
-        {/* Decorative elements */}
-        <div className="absolute left-0 top-1/2 w-16 h-16 bg-blue-200 rounded-lg opacity-20 rotate-12"></div>
-        <div className="absolute right-10 top-10 w-12 h-12 bg-indigo-300 rounded-full opacity-25"></div>
-        <div className="max-w-7xl mx-auto relative">
-          <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12">
-            <div className="text-center">
-              <div className="text-gray-900 font-semibold text-sm md:text-base mb-2">
-                {language === 'fr' ? 'Assemblages de Meubles :' : 'Furniture Assemblies:'}
-              </div>
-              <div className="text-3xl md:text-4xl font-bold text-blue-600">1,200+</div>
-            </div>
-            <div className="text-center">
-              <div className="text-gray-900 font-semibold text-sm md:text-base mb-2">
-                {language === 'fr' ? 'Tâches de Déménagement :' : 'Moving tasks:'}
-              </div>
-              <div className="text-3xl md:text-4xl font-bold text-blue-600">850+</div>
-            </div>
-            <div className="text-center">
-              <div className="text-gray-900 font-semibold text-sm md:text-base mb-2">
-                {language === 'fr' ? 'Articles Montés :' : 'Items mounted:'}
-              </div>
-              <div className="text-3xl md:text-4xl font-bold text-blue-600">950+</div>
-            </div>
-            <div className="text-center">
-              <div className="text-gray-900 font-semibold text-sm md:text-base mb-2">
-                {language === 'fr' ? 'Réparations de Maison :' : 'Home Repairs:'}
-              </div>
-              <div className="text-3xl md:text-4xl font-bold text-blue-600">600+</div>
-            </div>
-            <div className="text-center">
-              <div className="text-gray-900 font-semibold text-sm md:text-base mb-2">
-                {language === 'fr' ? 'Maisons Nettoyées :' : 'Homes cleaned:'}
-              </div>
-              <div className="text-3xl md:text-4xl font-bold text-blue-600">720+</div>
-            </div>
-          </div>
-        </div>
-      </section>
+
 
       {/* Popular Projects Section */}
-      <section className="relative bg-white py-16 px-4 sm:px-6 lg:px-8 overflow-hidden">
+      <section className="relative bg-gradient-to-b from-white via-gray-50 to-white py-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
         {/* Decorative elements */}
-        <div className="absolute right-0 top-20 w-20 h-20 bg-indigo-200 rounded-full opacity-30"></div>
-        <div className="absolute right-10 bottom-20 w-16 h-16 bg-blue-300 rounded-full opacity-20"></div>
-        <div className="absolute left-5 bottom-40 w-14 h-14 bg-blue-100 rounded-lg opacity-30 rotate-45"></div>
+        <div className="absolute right-0 top-20 w-32 h-32 bg-indigo-200 rounded-full opacity-20 blur-3xl"></div>
+        <div className="absolute right-10 bottom-20 w-24 h-24 bg-blue-300 rounded-full opacity-15 blur-3xl"></div>
+        <div className="absolute left-5 bottom-40 w-20 h-20 bg-blue-100 rounded-lg opacity-20 blur-3xl rotate-45"></div>
         <div className="max-w-7xl mx-auto relative">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            {language === 'fr' ? 'Les favoris de nos clients' : 'Our customers\' favorites'}
-          </h2>
-          <p className="text-lg text-gray-600 mb-8">
-            {language === 'fr' ? 'Des services fiables, rapides et accessibles pour faciliter votre quotidien.' : 'Reliable, fast and accessible services to make your daily life easier.'}
-          </p>
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-4">
+              {language === 'fr' ? '⭐ Les favoris de nos clients' : '⭐ Our Customers\' Favorites'}
+            </h2>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              {language === 'fr' ? 'Des services fiables, rapides et accessibles pour faciliter votre quotidien.' : 'Reliable, fast and accessible services to make your daily life easier.'}
+            </p>
+          </div>
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
             {/* Furniture Assembly */}
             <Link to="/contact" className="group">
-              <div className="bg-gray-100 rounded-lg overflow-hidden mb-3">
+              <div className="bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl overflow-hidden mb-4 shadow-md hover:shadow-2xl transition-all duration-300 h-48 md:h-56">
                 <img
                   src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=400&q=80"
                   alt="Furniture Assembly"
-                  className="w-full h-32 md:h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                 />
               </div>
-              <h3 className="text-sm md:text-lg font-bold text-gray-900 mb-1">
+              <h3 className="text-sm md:text-base font-black text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">
                 {language === 'fr' ? 'Montage de meubles' : 'Furniture Assembly'}
               </h3>
-              <p className="text-gray-600 text-xs md:text-sm">
-                {language === 'fr' ? 'À partir de 29 400 FCFA' : 'Starting at 29,400 FCFA'}
+              <p className="text-gray-600 text-xs md:text-sm font-semibold">
+                {language === 'fr' ? '29,400 FCFA' : 'From $50'}
+              </p>
+              <p className="text-blue-600 text-xs mt-1 opacity-0 group-hover:opacity-100 transition-opacity font-bold">
+                →  {language === 'fr' ? 'Voir plus' : 'View more'}
               </p>
             </Link>
 
             {/* Wall Installation / Mount Decorations */}
             <Link to="/contact" className="group">
-              <div className="bg-gray-100 rounded-lg overflow-hidden mb-3">
+              <div className="bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl overflow-hidden mb-4 shadow-md hover:shadow-2xl transition-all duration-300 h-48 md:h-56">
                 <img
                   src="https://images.unsplash.com/photo-1513694203232-719a280e022f?w=400&q=80"
                   alt="Wall Installation"
-                  className="w-full h-32 md:h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                 />
               </div>
-              <h3 className="text-sm md:text-lg font-bold text-gray-900 mb-1">
-                {language === 'fr' ? 'Installation murale / Pose de décorations murales' : 'Wall Installation / Wall Decoration Installation'}
+              <h3 className="text-sm md:text-base font-black text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">
+                {language === 'fr' ? 'Installation murale' : 'Wall Installation'}
               </h3>
-              <p className="text-gray-600 text-xs md:text-sm">
-                {language === 'fr' ? 'À partir de 29 400 FCFA' : 'Starting at 29,400 FCFA'}
+              <p className="text-gray-600 text-xs md:text-sm font-semibold">
+                {language === 'fr' ? '29,400 FCFA' : 'From $50'}
+              </p>
+              <p className="text-blue-600 text-xs mt-1 opacity-0 group-hover:opacity-100 transition-opacity font-bold">
+                →  {language === 'fr' ? 'Voir plus' : 'View more'}
               </p>
             </Link>
 
             {/* Mount a TV */}
             <Link to="/contact" className="group">
-              <div className="bg-gray-100 rounded-lg overflow-hidden mb-3">
+              <div className="bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl overflow-hidden mb-4 shadow-md hover:shadow-2xl transition-all duration-300 h-48 md:h-56">
                 <img
                   src="https://images.unsplash.com/photo-1593784991095-a205069470b6?w=400&q=80"
                   alt="Mount TV"
-                  className="w-full h-32 md:h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                 />
               </div>
-              <h3 className="text-sm md:text-lg font-bold text-gray-900 mb-1">
+              <h3 className="text-sm md:text-base font-black text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">
                 {language === 'fr' ? 'Installation de TV' : 'TV Installation'}
               </h3>
-              <p className="text-gray-600 text-xs md:text-sm">
-                {language === 'fr' ? 'À partir de 41 400 FCFA' : 'Starting at 41,400 FCFA'}
+              <p className="text-gray-600 text-xs md:text-sm font-semibold">
+                {language === 'fr' ? '41,400 FCFA' : 'From $70'}
+              </p>
+              <p className="text-blue-600 text-xs mt-1 opacity-0 group-hover:opacity-100 transition-opacity font-bold">
+                →  {language === 'fr' ? 'Voir plus' : 'View more'}
               </p>
             </Link>
 
             {/* Help Moving */}
             <Link to="/contact" className="group">
-              <div className="bg-gray-100 rounded-lg overflow-hidden mb-3">
+              <div className="bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl overflow-hidden mb-4 shadow-md hover:shadow-2xl transition-all duration-300 h-48 md:h-56">
                 <img
                   src="https://images.unsplash.com/photo-1600518464441-9154a4dea21b?w=400&q=80"
                   alt="Help Moving"
-                  className="w-full h-32 md:h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                 />
               </div>
-              <h3 className="text-sm md:text-lg font-bold text-gray-900 mb-1">
-                {language === 'fr' ? 'Aide au déménagement' : 'Help Moving'}
+              <h3 className="text-sm md:text-base font-black text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">
+                {language === 'fr' ? 'Aide au déménagement' : 'Moving Help'}
               </h3>
-              <p className="text-gray-600 text-xs md:text-sm">
-                {language === 'fr' ? 'À partir de 40 200 FCFA' : 'Starting at 40,200 FCFA'}
+              <p className="text-gray-600 text-xs md:text-sm font-semibold">
+                {language === 'fr' ? '40,200 FCFA' : 'From $65'}
+              </p>
+              <p className="text-blue-600 text-xs mt-1 opacity-0 group-hover:opacity-100 transition-opacity font-bold">
+                →  {language === 'fr' ? 'Voir plus' : 'View more'}
               </p>
             </Link>
 
@@ -668,50 +653,57 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Testimonials Section - TaskRabbit Style */}
-      <section className="relative bg-white py-16 px-4 sm:px-6 lg:px-8 overflow-hidden">
+      {/* Testimonials Section - Premium Style */}
+      <section className="relative bg-gradient-to-b from-white via-gray-50 to-white py-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
         {/* Decorative elements */}
-        <div className="absolute left-0 bottom-20 w-28 h-28 bg-indigo-100 rounded-full opacity-30 -translate-x-1/3"></div>
-        <div className="absolute right-0 top-10 w-16 h-16 bg-blue-200 rounded-lg opacity-20 rotate-12 translate-x-1/3"></div>
+        <div className="absolute left-0 bottom-20 w-48 h-48 bg-indigo-100 rounded-full opacity-20 blur-3xl -translate-x-1/3"></div>
+        <div className="absolute right-0 top-10 w-32 h-32 bg-blue-200 rounded-lg opacity-15 blur-3xl rotate-12 translate-x-1/3"></div>
         <div className="max-w-7xl mx-auto relative">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-12 text-left">
-            {language === 'fr'
-              ? 'Découvrez ce que disent nos clients satisfaits à propos de OneMarket'
-              : 'See what happy customers are saying about OneMarket'}
-          </h2>
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-4">
+              {language === 'fr'
+                ? '⭐ Découvrez ce que disent nos clients'
+                : '⭐ See what happy customers are saying'}
+            </h2>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              {language === 'fr'
+                ? 'Rejoignez des milliers de clients satisfaits qui font confiance à OneMarket'
+                : 'Join thousands of satisfied customers who trust OneMarket'}
+            </p>
+          </div>
 
           {/* Desktop - 3 column grid */}
-          <div className="hidden md:grid md:grid-cols-3 gap-6">
+          <div className="hidden md:grid md:grid-cols-3 gap-8">
             {testimonials.map((testimonial, index) => (
-              <div key={index} className="bg-white p-6 rounded-lg border border-gray-200">
-                <div className="mb-4">
-                  <p className="font-bold text-gray-900 text-lg">{testimonial.name}</p>
-                  <div className="flex items-center gap-1 mt-2">
+              <div key={index} className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 hover:border-blue-200 hover:-translate-y-1">
+                <div className="mb-6">
+                  <div className="flex items-center gap-1 mb-3">
                     {[...Array(5)].map((_, i) => (
                       <StarIconSolid key={i} className="w-5 h-5 text-yellow-400" />
                     ))}
                   </div>
+                  <p className="font-black text-gray-900 text-lg">{testimonial.name}</p>
                 </div>
-                <p className="text-gray-700 mb-4 leading-relaxed">{testimonial.text}</p>
-                <p className="text-blue-600 font-medium text-sm">{testimonial.service}</p>
+                <p className="text-gray-700 mb-6 leading-relaxed italic">"{testimonial.text}"</p>
+                <p className="text-blue-600 font-bold text-sm uppercase tracking-wider">{testimonial.service}</p>
               </div>
             ))}
           </div>
 
           {/* Mobile - Horizontal scrollable */}
-          <div className="md:hidden flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-hide -mx-4 px-4">
+          <div className="md:hidden flex gap-6 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-hide -mx-4 px-4">
             {testimonials.map((testimonial, index) => (
-              <div key={index} className="bg-white p-6 rounded-lg border border-gray-200 min-w-[85%] snap-center">
-                <div className="mb-4">
-                  <p className="font-bold text-gray-900 text-lg">{testimonial.name}</p>
-                  <div className="flex items-center gap-1 mt-2">
+              <div key={index} className="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 min-w-[90%] snap-center">
+                <div className="mb-6">
+                  <div className="flex items-center gap-1 mb-3">
                     {[...Array(5)].map((_, i) => (
                       <StarIconSolid key={i} className="w-5 h-5 text-yellow-400" />
                     ))}
                   </div>
+                  <p className="font-black text-gray-900 text-lg">{testimonial.name}</p>
                 </div>
-                <p className="text-gray-700 mb-4 leading-relaxed">{testimonial.text}</p>
-                <p className="text-blue-600 font-medium text-sm">{testimonial.service}</p>
+                <p className="text-gray-700 mb-6 leading-relaxed italic">"{testimonial.text}"</p>
+                <p className="text-blue-600 font-bold text-sm uppercase tracking-wider">{testimonial.service}</p>
               </div>
             ))}
           </div>
@@ -835,33 +827,33 @@ export default function Home() {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="relative bg-gradient-to-br from-blue-50 to-indigo-50 py-16 px-4 sm:px-6 lg:px-8 overflow-hidden">
+      {/* CTA Section - Premium */}
+      <section className="relative bg-gradient-to-br from-blue-600 via-blue-700 to-indigo-700 py-24 px-4 sm:px-6 lg:px-8 overflow-hidden">
         {/* Decorative circles */}
-        <div className="absolute left-0 top-0 w-64 h-64 bg-blue-300 rounded-full opacity-20 -translate-x-1/2 -translate-y-1/2"></div>
-        <div className="absolute right-0 bottom-0 w-96 h-96 bg-indigo-300 rounded-full opacity-20 translate-x-1/2 translate-y-1/2"></div>
+        <div className="absolute left-0 top-0 w-96 h-96 bg-blue-400 rounded-full opacity-25 blur-3xl -translate-x-1/2 -translate-y-1/2"></div>
+        <div className="absolute right-0 bottom-0 w-96 h-96 bg-indigo-400 rounded-full opacity-25 blur-3xl translate-x-1/2 translate-y-1/2"></div>
 
-        <div className="max-w-4xl mx-auto text-center relative">
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">
-            {language === 'fr' ? 'Rejoignez la Communauté OneMarket' : 'Join the OneMarket Community'}
+        <div className="max-w-5xl mx-auto text-center relative">
+          <h2 className="text-4xl md:text-5xl font-black text-white mb-6">
+            {language === 'fr' ? '🚀 Rejoignez la Communauté OneMarket' : '🚀 Join the OneMarket Community'}
           </h2>
-          <p className="text-xl text-gray-600 mb-8">
+          <p className="text-xl md:text-2xl text-blue-50 mb-12 leading-relaxed max-w-3xl mx-auto">
             {language === 'fr'
-              ? 'OneMarket prépare le futur des services locaux au Gabon. Inscrivez-vous pour suivre notre progression, être informé(e) du lancement et profiter d\'avantages exclusifs en tant qu\'early adopter.'
-              : 'OneMarket is preparing the future of local services in Gabon. Sign up to follow our progress, be informed of the launch and enjoy exclusive benefits as an early adopter.'}
+              ? 'OneMarket révolutionne les services locaux au Gabon. Inscrivez-vous maintenant et devenez un early adopter avec avantages exclusifs.'
+              : 'OneMarket is revolutionizing local services in Gabon. Sign up now and become an early adopter with exclusive benefits.'}
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
             <Link
               to="/contact"
-              className="inline-flex items-center justify-center px-8 py-4 bg-blue-600 text-white rounded-lg font-semibold text-lg hover:bg-blue-700 transition-colors"
+              className="inline-flex items-center justify-center px-10 py-4 bg-white text-blue-600 rounded-xl font-black text-lg hover:shadow-2xl hover:scale-105 transition-all duration-300"
             >
-              {language === 'fr' ? 'Demander un Service' : 'Request a Service'}
+              {language === 'fr' ? '👉 Demander un Service' : '👉 Request a Service'}
             </Link>
             <Link
               to="/contact"
-              className="inline-flex items-center justify-center px-8 py-4 bg-white text-blue-600 border-2 border-blue-600 rounded-lg font-semibold text-lg hover:bg-blue-50 transition-colors"
+              className="inline-flex items-center justify-center px-10 py-4 bg-transparent text-white border-3 border-white rounded-xl font-black text-lg hover:bg-white hover:text-blue-600 hover:shadow-2xl transition-all duration-300"
             >
-              {language === 'fr' ? 'Devenir Prestataire' : 'Become a Provider'}
+              {language === 'fr' ? '⭐ Devenir Prestataire' : '⭐ Become a Provider'}
             </Link>
           </div>
         </div>
