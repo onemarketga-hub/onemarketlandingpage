@@ -278,6 +278,16 @@ export default function Home() {
             </div>
           </div>
 
+          {/* Hero CTA Button */}
+          <div className="text-center mb-20">
+            <button
+              onClick={() => setShowAppModal(true)}
+              className="inline-flex items-center justify-center w-full sm:w-auto px-8 sm:px-12 py-4 sm:py-5 bg-yellow-400 hover:bg-yellow-300 text-blue-900 font-black text-lg sm:text-xl rounded-2xl shadow-2xl hover:shadow-3xl hover:scale-105 transition-all duration-300"
+            >
+              {language === 'fr' ? '🚀 Commencer Maintenant' : '🚀 Get Started Now'}
+            </button>
+          </div>
+
           {/* Service Category Icons */}
           <div className="mb-12 max-w-5xl mx-auto">
             <div className="grid grid-cols-4 md:grid-cols-8 gap-4 md:gap-6">
