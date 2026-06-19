@@ -366,7 +366,7 @@ export default function Home() {
                 </button>
               </div>
               <div>
-                <img
+                <img loading="lazy"
                   src={currentCard.image}
                   alt={currentCard.title}
                   className="w-full h-96 object-cover rounded-2xl shadow-xl hover:shadow-2xl transition-shadow duration-300"
@@ -398,7 +398,7 @@ export default function Home() {
             {/* Furniture Assembly */}
             <Link to="/contact" className="group">
               <div className="bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl overflow-hidden mb-4 shadow-md hover:shadow-2xl transition-all duration-300 h-48 md:h-56">
-                <img
+                <img loading="lazy"
                   src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80"
                   alt="Furniture Assembly"
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
@@ -418,7 +418,7 @@ export default function Home() {
             {/* Wall Installation / Mount Decorations */}
             <Link to="/contact" className="group">
               <div className="bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl overflow-hidden mb-4 shadow-md hover:shadow-2xl transition-all duration-300 h-48 md:h-56">
-                <img
+                <img loading="lazy"
                   src="https://images.unsplash.com/photo-1513694203232-719a280e022f?w=400&q=80"
                   alt="Wall Installation"
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
@@ -438,7 +438,7 @@ export default function Home() {
             {/* Mount a TV */}
             <Link to="/contact" className="group">
               <div className="bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl overflow-hidden mb-4 shadow-md hover:shadow-2xl transition-all duration-300 h-48 md:h-56">
-                <img
+                <img loading="lazy"
                   src="https://images.unsplash.com/photo-1593784991095-a205069470b6?w=400&q=80"
                   alt="Mount TV"
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
@@ -458,7 +458,7 @@ export default function Home() {
             {/* Help Moving */}
             <Link to="/contact" className="group">
               <div className="bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl overflow-hidden mb-4 shadow-md hover:shadow-2xl transition-all duration-300 h-48 md:h-56">
-                <img
+                <img loading="lazy"
                   src="https://images.unsplash.com/photo-1600518464441-9154a4dea21b?w=400&q=80"
                   alt="Help Moving"
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
@@ -481,7 +481,7 @@ export default function Home() {
                 {/* House Cleaning */}
                 <Link to="/contact" className="group">
                   <div className="bg-gray-100 rounded-lg overflow-hidden mb-3">
-                    <img
+                    <img loading="lazy"
                       src="https://images.pexels.com/photos/6196684/pexels-photo-6196684.jpeg?w=400&q=80"
                       alt="House Cleaning"
                       className="w-full h-32 md:h-48 object-cover group-hover:scale-105 transition-transform duration-300"
@@ -498,7 +498,7 @@ export default function Home() {
                 {/* Plumbing */}
                 <Link to="/contact" className="group">
                   <div className="bg-gray-100 rounded-lg overflow-hidden mb-3">
-                    <img
+                    <img loading="lazy"
                       src="https://images.unsplash.com/photo-1607472586893-edb57bdc0e39?w=400&q=80"
                       alt="Plumbing"
                       className="w-full h-32 md:h-48 object-cover group-hover:scale-105 transition-transform duration-300"
@@ -515,7 +515,7 @@ export default function Home() {
                 {/* Electrical */}
                 <Link to="/contact" className="group">
                   <div className="bg-gray-100 rounded-lg overflow-hidden mb-3">
-                    <img
+                    <img loading="lazy"
                       src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=400&q=80"
                       alt="Electrical"
                       className="w-full h-32 md:h-48 object-cover group-hover:scale-105 transition-transform duration-300"
@@ -532,7 +532,7 @@ export default function Home() {
                 {/* Heavy Lifting */}
                 <Link to="/contact" className="group">
                   <div className="bg-gray-100 rounded-lg overflow-hidden mb-3">
-                    <img
+                    <img loading="lazy"
                       src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=400&q=80"
                       alt="Heavy Lifting"
                       className="w-full h-32 md:h-48 object-cover group-hover:scale-105 transition-transform duration-300"
@@ -584,7 +584,7 @@ export default function Home() {
       </section>
 
       {/* Why Choose Section */}
-      <section className="relative bg-white py-16 px-4 sm:px-6 lg:px-8 overflow-hidden">
+      <section className="relative bg-white py-12 sm:py-16 px-4 sm:px-6 lg:px-8 overflow-hidden">
         {/* Decorative elements */}
         <div className="absolute left-10 top-10 w-24 h-24 bg-blue-100 rounded-full opacity-40"></div>
         <div className="absolute right-20 bottom-10 w-18 h-18 bg-indigo-200 opacity-25" style={{clipPath: 'polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)'}}></div>
@@ -710,7 +710,7 @@ export default function Home() {
       </section>
 
       {/* How It Works Section */}
-      <section className="relative bg-gradient-to-br from-blue-50 to-indigo-50 py-16 px-4 sm:px-6 lg:px-8 overflow-hidden">
+      <section className="relative bg-gradient-to-br from-blue-50 to-indigo-50 py-12 sm:py-16 px-4 sm:px-6 lg:px-8 overflow-hidden">
         {/* Decorative circles */}
         <div className="absolute right-0 top-0 w-64 h-64 bg-blue-400 rounded-full opacity-20 translate-x-1/3 -translate-y-1/3"></div>
         <div className="absolute right-0 bottom-0 w-96 h-96 bg-blue-300 rounded-full opacity-20 translate-x-1/2 translate-y-1/2"></div>
@@ -762,7 +762,7 @@ export default function Home() {
               </div>
             </div>
             <div className="rounded-2xl overflow-hidden shadow-2xl">
-              <img
+              <img loading="lazy"
                 src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=800&q=80"
                 alt="How it works"
                 className="w-full h-[400px] object-cover"
@@ -773,7 +773,7 @@ export default function Home() {
           {/* Mobile Layout */}
           <div className="lg:hidden">
             <div className="rounded-2xl overflow-hidden shadow-2xl mb-8">
-              <img
+              <img loading="lazy"
                 src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=800&q=80"
                 alt="How it works"
                 className="w-full h-64 object-cover"
@@ -841,16 +841,16 @@ export default function Home() {
               ? 'OneMarket révolutionne les services locaux au Gabon. Inscrivez-vous maintenant et devenez un early adopter avec avantages exclusifs.'
               : 'OneMarket is revolutionizing local services in Gabon. Sign up now and become an early adopter with exclusive benefits.'}
           </p>
-          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center w-full px-4 sm:px-0">
             <Link
               to="/contact"
-              className="inline-flex items-center justify-center px-10 py-4 bg-white text-blue-600 rounded-xl font-black text-lg hover:shadow-2xl hover:scale-105 transition-all duration-300"
+              className="w-full sm:w-auto inline-flex items-center justify-center px-8 sm:px-10 py-4 sm:py-5 bg-white text-blue-600 rounded-xl font-black text-base sm:text-lg hover:shadow-2xl hover:scale-105 transition-all duration-300"
             >
               {language === 'fr' ? '👉 Demander un Service' : '👉 Request a Service'}
             </Link>
             <Link
               to="/contact"
-              className="inline-flex items-center justify-center px-10 py-4 bg-transparent text-white border-3 border-white rounded-xl font-black text-lg hover:bg-white hover:text-blue-600 hover:shadow-2xl transition-all duration-300"
+              className="w-full sm:w-auto inline-flex items-center justify-center px-8 sm:px-10 py-4 sm:py-5 bg-transparent text-white border-3 border-white rounded-xl font-black text-base sm:text-lg hover:bg-white hover:text-blue-600 hover:shadow-2xl transition-all duration-300"
             >
               {language === 'fr' ? '⭐ Devenir Prestataire' : '⭐ Become a Provider'}
             </Link>
@@ -859,7 +859,7 @@ export default function Home() {
       </section>
 
       {/* App Download Section */}
-      <section className="bg-gray-50 py-16 px-4 sm:px-6 lg:px-8">
+      <section className="bg-gray-50 py-12 sm:py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
