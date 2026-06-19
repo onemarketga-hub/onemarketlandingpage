@@ -59,7 +59,7 @@ export default function Home() {
       trending: language === 'fr'
         ? 'En vogue : canapés incurvés, bureaux ergonomiques et matériaux éthiques.'
         : 'In style: curved sofas, ergonomic desks and ethical materials.',
-      image: 'https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=800&q=80',
+      image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80',
       bgColor: 'from-blue-50 to-cyan-50',
     },
     WallInstallation: {
@@ -92,7 +92,7 @@ export default function Home() {
       trending: language === 'fr'
         ? 'Nettoyage écologique, nettoyage en profondeur et entretien régulier.'
         : 'Eco-friendly cleaning, deep cleaning, and regular maintenance.',
-      image: 'https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=800&q=80',
+      image: 'https://images.pexels.com/photos/6196684/pexels-photo-6196684.jpeg?w=1260&h=750',
       bgColor: 'from-blue-50 to-indigo-50',
     },
     Outdoor: {
@@ -114,10 +114,7 @@ export default function Home() {
       trending: language === 'fr'
         ? 'Réparations mineures, entretien préventif et rénovations.'
         : 'Minor repairs, preventive maintenance, and renovations.',
-      image: 'https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=800&q=80',
-      bgColor: 'from-orange-50 to-amber-50',
-    },
-    Painting: {
+      image: 'https://images.pexels.com/photos/12555012/pexels-photo-12555012.jpeg?w=1260&h=750',
       title: language === 'fr' ? 'Peinture' : 'Painting',
       description: language === 'fr'
         ? 'Services de peinture intérieure et extérieure pour votre maison.'
@@ -402,7 +399,7 @@ export default function Home() {
             <Link to="/contact" className="group">
               <div className="bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl overflow-hidden mb-4 shadow-md hover:shadow-2xl transition-all duration-300 h-48 md:h-56">
                 <img
-                  src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=400&q=80"
+                  src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80"
                   alt="Furniture Assembly"
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                 />
@@ -485,7 +482,7 @@ export default function Home() {
                 <Link to="/contact" className="group">
                   <div className="bg-gray-100 rounded-lg overflow-hidden mb-3">
                     <img
-                      src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=400&q=80"
+                      src="https://images.pexels.com/photos/6196684/pexels-photo-6196684.jpeg?w=400&q=80"
                       alt="House Cleaning"
                       className="w-full h-32 md:h-48 object-cover group-hover:scale-105 transition-transform duration-300"
                     />
